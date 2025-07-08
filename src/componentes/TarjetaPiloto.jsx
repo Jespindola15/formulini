@@ -1,16 +1,18 @@
 // src/components/TarjetaPiloto.jsx
 import React from 'react';
-import '../Styles/TarjetaPiloto.css'; // <-- DESCOMENTADO
+import '../Styles/TarjetaPiloto.css';
 
-const TarjetaPiloto = ({ nombre, numero, urlImagen, equipo }) => {
-  console.log("TarjetaPiloto: Renderizando para", nombre);
+// Añadimos apellido, nacionalidad y edad a las props
+const TarjetaPiloto = ({ nombre, apellido, numero, urlImagen, equipo, nacionalidad, edad }) => {
   return (
-    // Eliminamos los estilos en línea temporales
-    <div className="tarjeta-piloto"> {/* Usamos la clase CSS */}
-      <img src={urlImagen} alt={nombre} className="imagen-piloto" /> {/* Usamos la clase CSS */}
-      <span className="numero-piloto">{numero}</span> {/* Usamos la clase CSS */}
-      <h3 className="nombre-piloto">{nombre}</h3> {/* Usamos la clase CSS */}
-      <p className="equipo-piloto">{equipo}</p> {/* Usamos la clase CSS */}
+    <div className="tarjeta-piloto">
+      <span className="numero-piloto">{numero}</span>
+      <img src={urlImagen} alt={`Foto de ${nombre} ${apellido}`} className="imagen-piloto" />
+      <h3 className="nombre-piloto">{nombre} {apellido}</h3>
+      <p className="equipo-piloto">{equipo}</p>
+      {/* NUEVO: Mostrar nacionalidad y edad */}
+      <p className="nacionalidad-piloto">Nacionalidad: {nacionalidad}</p>
+      <p className="edad-piloto">Edad: {edad} años</p>
     </div>
   );
 };
