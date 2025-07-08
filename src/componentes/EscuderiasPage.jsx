@@ -12,13 +12,13 @@ const EscuderiasPage = () => {
     { id: 3, name: 'Mercedes', slug: 'mercedes', color: '#00D2BE', driver1: 'Lewis Hamilton', driver2: 'George Russell', carImage: '/imagenes/mercedes-auto-removebg-preview.png', largeLogo: '/imagenes/mercedes-logo-large.png' },
     { id: 4, name: 'Red Bull Racing', slug: 'redbull', color: '#3671C6', driver1: 'Max Verstappen', driver2: 'Sergio Pérez', carImage: '/imagenes/redbull-auto-removebg-preview.png', largeLogo: '/imagenes/redbull-logo-large.png' },
     { id: 5, name: 'Williams', slug: 'williams', color: '#005A9C', driver1: 'Alexander Albon', driver2: 'Logan Sargeant', carImage: '/imagenes/wiliams-auto-removebg-preview.png', largeLogo: '/imagenes/williams-logo-large.png' },
-    { id: 6, name: 'Kick Sauber', slug: 'kick-sauber', color: '#B6B6B6', driver1: 'Valtteri Bottas', driver2: 'Zhou Guanyu', carImage: '/imagenes/kick-auto-removebg-preview.png', largeLogo: '/imagenes/sauber-logo-large.png' },
+    { id: 6, name: 'Kick Sauber', slug: 'kick-sauber', color: '#5b9e00', driver1: 'Valtteri Bottas', driver2: 'Zhou Guanyu', carImage: '/imagenes/kick-auto-removebg-preview.png', largeLogo: '/imagenes/sauber-logo-large.png' },
     { id: 7, name: 'Racing Bulls', slug: 'racing-bulls', color: '#6692FF', driver1: 'Daniel Ricciardo', driver2: 'Yuki Tsunoda', carImage: '/imagenes/rbracing-auto-removebg-preview.png', largeLogo: '/imagenes/racingbulls-logo-large.png' },
     { id: 8, name: 'Aston Martin', slug: 'aston-martin', color: '#006F62', driver1: 'Fernando Alonso', driver2: 'Lance Stroll', carImage: '/imagenes/astonmartin-auto-removebg-preview.png', largeLogo: '/imagenes/astonmartin-logo-large.png' },
     { id: 9, name: 'Haas', slug: 'haas', color: '#B6B6B6', driver1: 'Kevin Magnussen', driver2: 'Nico Hülkenberg', carImage: '/imagenes/hass-auto-removebg-preview.png', largeLogo: '/imagenes/haas-logo-large.png' },
     { id: 10, name: 'Alpine', slug: 'alpine', color: '#0090FF', driver1: 'Esteban Ocon', driver2: 'Pierre Gasly', carImage: '/imagenes/alpine-auto-removebg-preview.png', largeLogo: '/imagenes/alpine-logo-large.png' },
   ];
-
+                                          
   return (
     <div className="escuderias-page-container">
       <h2 className="page-title">F1 TEAMS 2025</h2>
