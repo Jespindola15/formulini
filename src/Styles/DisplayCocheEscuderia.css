@@ -1,0 +1,13 @@
+/* src/Styles/DisplayCocheEscuderia.css */
+.display-coche-escuderia {
+  grid-area: car; /* Se posiciona en el área 'car' del grid definido en EscuderiaDetail.css */
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.imagen-coche {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(0, 210, 190, 0.4)); /* Efecto de brillo/sombra sutil */
+}

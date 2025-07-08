@@ -1,0 +1,59 @@
+/* src/Styles/PistasPage.css */
+.pistas-page-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--texto-claro);
+}
+
+.pistas-page-container h2 {
+  text-align: center;
+  font-size: 2.5em;
+  color: var(--f1-rojo);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.grid-pistas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.tarjeta-pista {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tarjeta-pista:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.imagen-pista {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.tarjeta-pista h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--text-claro);
+  margin: 10px 0 5px 0;
+}
+
+.tarjeta-pista p {
+  font-size: 0.9em;
+  color: var(--f1-gris);
+  margin: 0;
+}

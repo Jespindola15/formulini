@@ -1,0 +1,18 @@
+/* src/Styles/PilotosPage.css */
+.pilotos-page-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--texto-claro);
+}
+
+.pilotos-page-container h2 {
+  text-align: center;
+  font-size: 2.5em;
+  color: var(--f1-rojo);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* El estilo de .grid-pilotos está definido en TarjetaPiloto.css para reutilizar */
+/* Si necesitas estilos adicionales específicos de esta página, ponlos aquí */

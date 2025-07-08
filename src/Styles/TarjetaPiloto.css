@@ -1,0 +1,81 @@
+/* src/Styles/TarjetaPiloto.css */
+.seccion-pilotos-escuderia {
+  grid-area: drivers;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.tarjeta-piloto {
+  background-color: var(--card-background); /* Fondo casi transparente */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  width: 220px;
+  position: relative;
+  overflow: hidden; /* Importante para que el número grande no se salga */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--card-border); /* Borde muy sutil */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+}
+
+.tarjeta-piloto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.imagen-piloto {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--mercedes-cian); /* Borde con el color del equipo */
+  margin-bottom: 15px;
+  filter: grayscale(0.1) brightness(0.95); /* Menos gris, un poco más brillante */
+  transition: filter 0.3s ease;
+  position: relative;
+  z-index: 2; /* Asegura que la imagen esté por encima del número */
+}
+
+.tarjeta-piloto:hover .imagen-piloto {
+  filter: grayscale(0) brightness(1);
+}
+
+.numero-piloto {
+  position: absolute;
+  top: 50%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta al centro exacto */
+  font-size: 10em; /* ¡AÚN MÁS GRANDE para ese efecto de marca de agua! */
+  font-weight: 700;
+  color: var(--f1-gris-casi-invisible); /* ¡MUY TENUE, casi invisible! */
+  line-height: 1;
+  z-index: 1; /* Asegura que esté detrás de la imagen pero delante del fondo de la tarjeta */
+  pointer-events: none; /* Para que no interfiera con clics si hubiera */
+}
+
+.nombre-piloto {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--texto-claro); /* Blanco brillante */
+  margin: 10px 0 5px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.equipo-piloto {
+  font-size: 0.9em;
+  color: var(--f1-gris-tenue); /* Gris muy tenue para el nombre del equipo */
+  position: relative;
+  z-index: 3;
+}
+
+/* Estilos para el grid general de pilotos en PilotosPage.jsx */
+.grid-pilotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}

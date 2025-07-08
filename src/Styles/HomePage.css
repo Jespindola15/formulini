@@ -1,0 +1,115 @@
+/* src/Styles/HomePage.css */
+
+.home-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--texto-claro);
+}
+
+.hero-section {
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+  padding: 60px 20px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-logo {
+  width: 180px; /* Tamaño del logo */
+  height: auto;
+  margin-bottom: 20px;
+  filter: brightness(1.2); /* Un poco más brillante */
+}
+
+.hero-section h1 {
+  font-size: 3.5em;
+  color: var(--f1-rojo);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-section p {
+  font-size: 1.3em;
+  color: var(--f1-gris);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.featured-section {
+  margin-top: 50px;
+}
+
+.featured-section h2 {
+  font-size: 2.8em;
+  color: var(--texto-claro);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.featured-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.featured-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.featured-item h3 {
+  font-size: 1.8em;
+  color: var(--f1-rojo);
+  margin-bottom: 10px;
+}
+
+.featured-item p {
+  font-size: 1em;
+  color: var(--f1-gris);
+  margin-bottom: 15px;
+}
+
+.featured-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 15px;
+  filter: brightness(0.8); /* Un poco más oscuro */
+  transition: filter 0.3s ease;
+}
+
+.featured-item:hover .featured-image {
+  filter: brightness(1); /* Brillo normal al pasar el ratón */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5em;
+  }
+
+  .hero-section p {
+    font-size: 1em;
+  }
+
+  .featured-section h2 {
+    font-size: 2em;
+  }
+}

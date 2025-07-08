@@ -1,0 +1,49 @@
+/* src/Styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --fondo-oscuro: #0a0a0a;
+  --texto-claro: #f8f8f8;
+  --f1-rojo: #e10600;
+  --f1-gris-claro: #c0c0c0;
+  --f1-gris-tenue: rgba(255, 255, 255, 0.2);
+  --f1-gris-casi-invisible: rgba(255, 255, 255, 0.05);
+  --mercedes-cian: #00d2be;
+  --nav-fondo: #050505;
+  --card-background: rgba(255, 255, 255, 0.01);
+  --card-border: rgba(255, 255, 255, 0.02);
+  --glow-color: rgba(0, 210, 190, 0.6);
+  --navbar-height: 80px; /* Altura estimada de tu Navbar */
+}
+
+html, body, #root { /* Asegúrate de que #root o el ID de tu div principal de React ocupe el 100% */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; /* <-- ¡QUITAR O COMENTAR ESTA LÍNEA! */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--fondo-oscuro);
+  color: var(--texto-claro);
+  overflow-x: hidden; /* Mantiene el scroll horizontal oculto */
+  /* overflow-y: hidden; /* <-- ¡QUITAR O COMENTAR ESTA LÍNEA! */
+}
+
+.mensaje-carga, .mensaje-error, .mensaje-sin-datos {
+  text-align: center;
+  color: var(--f1-gris-claro);
+  margin-top: 50px;
+  font-size: 1.2em;
+}
+
+main.content {
+  min-height: calc(100vh - var(--navbar-height)); /* Ajusta la altura del contenido */
+  display: flex; /* Para que el contenido interno pueda usar flex/grid */
+  flex-direction: column;
+  flex-grow: 1; /* Permite que el main crezca y ocupe el espacio disponible */
+  padding: 0; /* Aseguramos que no haya padding extra aquí */
+}
