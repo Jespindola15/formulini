@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import React from 'react';
 import '../Styles/HomePage.css'; // Vamos a crear este CSS para Home
 
@@ -6,10 +5,17 @@ const Home = () => {
   return (
     <div className="home-container">
       <section className="hero-section">
-        <img src="/imagenes/formulini-logo.png" alt="Fórmula 1 Logo" className="hero-logo" />
-        <h1>Bienvenido al Mundo de la Fórmula 1</h1>
-        <p>Tu destino para estadísticas, pilotos y escuderías de la F1.</p>
-        {/* Aquí podrías añadir un botón para explorar más */}
+        <video autoPlay muted loop playsInline className="hero-video">
+          <source src="/video/f1-intro.mp4" type="video/mp4" />
+          Tu navegador no soporta videos HTML5.
+        </video>
+
+        <div className="hero-content">
+          <img src="/imagenes/formulini-logo.png" alt="Fórmula 1 Logo" className="hero-logo" />
+          <h1>Bienvenido al Mundo de la Fórmula 1</h1>
+          <p>Tu destino para estadísticas, pilotos y escuderías de la F1.</p>
+          {/* Aquí podrías añadir un botón para explorar más */}
+        </div>
       </section>
 
       <section className="featured-section">

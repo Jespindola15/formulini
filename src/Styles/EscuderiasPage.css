@@ -147,6 +147,12 @@
   transform: scale(1.15);
 }
 
+a {
+  text-decoration: none;
+  color: inherit; /* Asegura que los enlaces hereden el color del texto */
+}
+
+
 /* Media queries para responsividad */
 @media (max-width: 768px) {
   .escuderias-grid {
@@ -167,4 +173,21 @@
   .escuderias-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+
+@keyframes auto-move-hover {
+  0% {
+    transform: translateX(0) scale(1.15);
+  }
+  50% {
+    transform: translateX(10px) scale(1.15);
+  }
+  100% {
+    transform: translateX(0) scale(1.15);
+  }
+}
+
+.escuderia-card:hover .car-image {
+  animation: auto-move-hover 1.5s ease-in-out infinite;
 }
