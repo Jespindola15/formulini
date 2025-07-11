@@ -1,18 +1,53 @@
 /* src/Styles/PilotosPage.css */
+
 .pilotos-page-container {
-  padding: 20px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
   color: var(--texto-claro);
 }
 
-.pilotos-page-container h2 {
-  text-align: center;
-  font-size: 2.5em;
-  color: var(--f1-rojo);
-  margin-bottom: 40px;
+.page-title {
+  font-size: 2.8em;
+  color: var(--texto-claro);
+  margin-bottom: 10px;
   text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
-/* El estilo de .grid-pilotos está definido en TarjetaPiloto.css para reutilizar */
-/* Si necesitas estilos adicionales específicos de esta página, ponlos aquí */
+.page-subtitle {
+  font-size: 1.1em;
+  color: var(--f1-gris-claro);
+  margin-bottom: 40px;
+}
+
+.grid-pilotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el tamaño de las tarjetas */
+  gap: 30px;
+  justify-content: center;
+  padding: 0 20px; /* Padding para que no se peguen a los bordes */
+}
+
+/* Estilos de la tarjeta de piloto (repetidos aquí para claridad, pero ya están en TarjetaPiloto.css) */
+/* Asegúrate de que TarjetaPiloto.css tenga los estilos finales y que no haya conflictos */
+/* .tarjeta-piloto { ... } */
+/* .imagen-piloto { ... } */
+/* .numero-piloto { ... } */
+/* .nombre-piloto { ... } */
+/* .equipo-piloto, .nacionalidad-piloto, .edad-piloto { ... } */
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .grid-pilotos {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-pilotos {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+  }
+}

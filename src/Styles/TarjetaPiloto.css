@@ -1,5 +1,5 @@
 /* src/Styles/TarjetaPiloto.css */
-.seccion-pilotos-escuderia {
+.seccion-pilotos-escuderia { /* Esta clase es para la sección de pilotos en EscuderiaDetail */
   grid-area: drivers;
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +9,7 @@
 }
 
 .tarjeta-piloto {
-  background-color: var(--card-background); /* Fondo casi transparente */
+  background-color: var(--card-background); /* Usa la variable */
   padding: 20px;
   border-radius: 12px;
   text-align: center;
@@ -17,8 +17,9 @@
   position: relative;
   overflow: hidden; /* Importante para que el número grande no se salga */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid var(--card-border); /* Borde muy sutil */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+  border: 1px solid var(--card-border); /* Usa la variable */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+  cursor: pointer; /* Indica que es clicable */
 }
 
 .tarjeta-piloto:hover {
@@ -31,12 +32,12 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--mercedes-cian); /* Borde con el color del equipo */
+  border: 3px solid var(--f1-rojo); /* Puedes usar un color genérico o del equipo */
   margin-bottom: 15px;
-  filter: grayscale(0.1) brightness(0.95); /* Menos gris, un poco más brillante */
+  filter: grayscale(0.1) brightness(0.95);
   transition: filter 0.3s ease;
   position: relative;
-  z-index: 2; /* Asegura que la imagen esté por encima del número */
+  z-index: 2; /* Asegura que esté por encima del número */
 }
 
 .tarjeta-piloto:hover .imagen-piloto {
@@ -45,15 +46,15 @@
 
 .numero-piloto {
   position: absolute;
-  top: 50%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
-  transform: translate(-50%, -50%); /* Ajusta al centro exacto */
-  font-size: 10em; /* ¡AÚN MÁS GRANDE para ese efecto de marca de agua! */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8em; /* Tamaño grande para el efecto de marca de agua */
   font-weight: 700;
-  color: var(--f1-gris-casi-invisible); /* ¡MUY TENUE, casi invisible! */
+  color: var(--f1-gris-casi-invisible); /* Muy tenue */
   line-height: 1;
-  z-index: 1; /* Asegura que esté detrás de la imagen pero delante del fondo de la tarjeta */
-  pointer-events: none; /* Para que no interfiera con clics si hubiera */
+  z-index: 1; /* Detrás de la imagen pero delante del fondo */
+  pointer-events: none;
 }
 
 .nombre-piloto {
@@ -65,11 +66,12 @@
   z-index: 3;
 }
 
-.equipo-piloto {
+.equipo-piloto, .nacionalidad-piloto, .edad-piloto { /* Añadimos las nuevas clases */
   font-size: 0.9em;
-  color: var(--f1-gris-tenue); /* Gris muy tenue para el nombre del equipo */
+  color: var(--f1-gris-tenue); /* Gris muy tenue */
   position: relative;
   z-index: 3;
+  margin: 2px 0; /* Espaciado entre las nuevas líneas */
 }
 
 /* Estilos para el grid general de pilotos en PilotosPage.jsx */

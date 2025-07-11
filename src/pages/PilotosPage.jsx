@@ -14,7 +14,7 @@ const PilotosPage = () => {
   useEffect(() => {
     const fetchPilotos = async () => {
       try {
-        const data = await getAllPilotos(); // Llama a la función del servicio
+        const data = await getAllPilotos();
         setPilotos(data);
       } catch (err) {
         setError(err);
@@ -22,6 +22,7 @@ const PilotosPage = () => {
         setCargando(false);
       }
     };
+
     fetchPilotos();
   }, []);
 
@@ -31,16 +32,22 @@ const PilotosPage = () => {
 
   return (
     <div className="pilotos-page-container">
-      <h2>Pilotos de Fórmula 1</h2>
+      <h2 className="page-title">F1 DRIVERS 2025</h2>
+      <p className="page-subtitle">Meet the current Formula 1 drivers for the 2025 season</p>
       <div className="grid-pilotos">
         {pilotos.map(piloto => (
-          <TarjetaPiloto
-            key={piloto.id}
-            nombre={piloto.nombre}
-            numero={piloto.numero}
-            urlImagen={piloto.urlImagen}
-            equipo={piloto.equipoActual} // Asegúrate que el nombre de la propiedad coincida con tu API
-          />
+          <Link key={piloto.id} to={`/pilotos/${piloto.id}`}> {/* Enlace a la página de detalle del piloto */}
+            {/* El componente TarjetaPiloto ahora recibe todas las props necesarias */}
+            <TarjetaPiloto
+              nombre={piloto.nombre}
+              apellido={piloto.apellido}
+              numero={piloto.numero}
+              urlImagen={piloto.urlImagen}
+              equipo={piloto.equipo}
+              nacionalidad={piloto.nacionalidad}
+              edad={piloto.edad}
+            />
+          </Link>
         ))}
       </div>
     </div>
