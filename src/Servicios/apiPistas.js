@@ -30,4 +30,9 @@ export const getPistaById = async (id) => {
     console.error("Error en getPistaById:", error);
     throw error;
   }
+
+  
 };
+
+export const updatePista = async (id, pistaActualizada) => { /* PUT /pistas/:id */ };
+export const deletePista = async (id) => { /* DELETE /pistas/:id */ };

@@ -1,59 +1,83 @@
-/* src/Styles/PistasPage.css */
+/* Fondo y texto general */
 .pistas-page-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  color: var(--texto-claro);
+  background-color: black;
+  color: white;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-.pistas-page-container h2 {
+/* Título */
+h2 {
   text-align: center;
-  font-size: 2.5em;
-  color: var(--f1-rojo);
-  margin-bottom: 40px;
-  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
+/* Grid de tarjetas */
 .grid-pistas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-content: center;
 }
 
+/* Tarjetas generales */
 .tarjeta-pista {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #555;
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: space-between;
 }
 
-.tarjeta-pista:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.imagen-pista {
-  width: 100%;
-  max-height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
+/* Título de pista */
 .tarjeta-pista h3 {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: var(--text-claro);
-  margin: 10px 0 5px 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
+/* Texto */
 .tarjeta-pista p {
-  font-size: 0.9em;
-  color: var(--f1-gris);
-  margin: 0;
+  margin: 0.3rem 0;
+}
+
+/* Inputs de agregar */
+.tarjeta-pista input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* Botonera */
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Estilo botones */
+.acciones button {
+  background-color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover botones */
+.acciones button:hover {
+  background-color: #ddd;
+}
+
+/* Estilo especial para la tarjeta de agregar */
+.tarjeta-pista.agregar {
+  background-color: #444;
 }
