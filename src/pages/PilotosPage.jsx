@@ -1,9 +1,10 @@
 // src/pages/PilotosPage.jsx
 import React, { useEffect, useState } from 'react';
-import { Link } from 'wouter';
-import TarjetaPiloto from '../componentes/TarjetaPiloto';
-import { getAllPilotos } from '../Servicios/apiPilotos'; // Importa la función del servicio
-import '../Styles/PilotosPage.css'; // Estilos para esta página
+import { getAllPilotos } from '../Servicios/apiPilotos'; // Importa tu servicio de pilotos
+import TarjetaPiloto from '../componentes/TarjetaPiloto'; // Reutilizamos el componente
+import '../Styles/PilotosPage.css'; // ¡Ruta ajustada!
+import Loader from '../componentes/Loader'; // Importás el loader
+
 
 const PilotosPage = () => {
   const [pilotos, setPilotos] = useState([]);
@@ -25,7 +26,7 @@ const PilotosPage = () => {
     fetchPilotos();
   }, []);
 
-  if (cargando) return <div className="mensaje-carga">Cargando pilotos...</div>;
+    if (cargando) return <Loader />;
   if (error) return <div className="mensaje-error">Error: {error.message}</div>;
   if (pilotos.length === 0) return <div className="mensaje-sin-datos">No hay pilotos disponibles.</div>;
 
