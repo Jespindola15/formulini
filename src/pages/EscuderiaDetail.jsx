@@ -5,12 +5,15 @@ import EstadisticasEscuderia from '../componentes/EstadisticasEscuderia';
 import TarjetaPiloto from '../componentes/TarjetaPiloto';
 import { getEscuderiaPorNombre } from '../Servicios/apiEscuderias'; // Importa tu función de servicio
 import '../Styles/EscuderiaDetail.css';
+import Loader from '../componentes/Loader'; // Importás el loader
+
 
 // Ahora EscuderiaDetail recibe 'escuderiaId' como una prop
 const EscuderiaDetail = ({ escuderiaId }) => {
   const [datosEscuderia, setDatosEscuderia] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  
 
   useEffect(() => {
     const fetchDatosEscuderia = async () => {
@@ -33,7 +36,8 @@ const EscuderiaDetail = ({ escuderiaId }) => {
     fetchDatosEscuderia();
   }, [escuderiaId]); // Vuelve a ejecutar el efecto si el ID de la escudería cambia
 
-  if (cargando) return <div className="mensaje-carga">Cargando datos de la escudería {escuderiaId}...</div>;
+    if (cargando) return <Loader />;
+
   if (error) return <div className="mensaje-error">Error: {error.message}</div>;
   if (!datosEscuderia) return <div className="mensaje-sin-datos">No hay datos de la escudería disponibles para {escuderiaId}.</div>;
 

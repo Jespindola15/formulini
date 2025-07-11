@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { getAllPilotos } from '../Servicios/apiPilotos'; // Importa tu servicio de pilotos
 import TarjetaPiloto from '../componentes/TarjetaPiloto'; // Reutilizamos el componente
 import '../Styles/PilotosPage.css'; // ¡Ruta ajustada!
+import Loader from '../componentes/Loader'; // Importás el loader
+
 
 const PilotosPage = () => {
   const [pilotos, setPilotos] = useState([]);
@@ -23,7 +25,7 @@ const PilotosPage = () => {
     fetchPilotos();
   }, []);
 
-  if (cargando) return <div className="mensaje-carga">Cargando pilotos...</div>;
+    if (cargando) return <Loader />;
   if (error) return <div className="mensaje-error">Error: {error.message}</div>;
   if (pilotos.length === 0) return <div className="mensaje-sin-datos">No hay pilotos disponibles.</div>;
 

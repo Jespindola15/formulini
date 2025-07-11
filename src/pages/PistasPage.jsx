@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { getAllPistas } from '../Servicios/apiPistas'; // Importa tu servicio de pistas
 import '../Styles/PistasPage.css'; // ¡Ruta ajustada!
+import Loader from '../componentes/Loader'; // Importás el loader
+
 
 const PistasPage = () => {
   const [pistas, setPistas] = useState([]);
@@ -22,7 +24,7 @@ const PistasPage = () => {
     fetchPistas();
   }, []);
 
-  if (cargando) return <div className="mensaje-carga">Cargando pistas...</div>;
+    if (cargando) return <Loader />;
   if (error) return <div className="mensaje-error">Error: {error.message}</div>;
   if (pistas.length === 0) return <div className="mensaje-sin-datos">No hay pistas disponibles.</div>;
 
