@@ -1,4 +1,20 @@
 /* src/Styles/PilotosPage.css */
+h1.pilotos-page-title {
+  font-size: 2.5em;
+  color: var(--texto-claro);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: center ;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  
+}
+h2.pilotos-page-subtitle {
+  font-size: 1.2em;
+  color: var(--f1-gris-claro);
+  margin-bottom: 40px;
+}
 
 .pilotos-page-container {
   padding: 40px 20px;
@@ -30,13 +46,6 @@
   padding: 0 20px; /* Padding para que no se peguen a los bordes */
 }
 
-/* Estilos de la tarjeta de piloto (repetidos aquí para claridad, pero ya están en TarjetaPiloto.css) */
-/* Asegúrate de que TarjetaPiloto.css tenga los estilos finales y que no haya conflictos */
-/* .tarjeta-piloto { ... } */
-/* .imagen-piloto { ... } */
-/* .numero-piloto { ... } */
-/* .nombre-piloto { ... } */
-/* .equipo-piloto, .nacionalidad-piloto, .edad-piloto { ... } */
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
