@@ -1,8 +1,3 @@
-// src/Servicios/apiPilotos.js
-
-// ¡¡IMPORTANTE!! Reemplaza esta URL con la URL base de tu backend .NET
-// src/Servicios/apiPilotos.js
-
 const API_BASE_URL = 'https://f1backend.onrender.com/api';
 
 // Obtener todos los pilotos
@@ -12,19 +7,67 @@ export const getAllPilotos = async () => {
   return res.json();
 };
 
-
+// Obtener piloto por ID
 export const getPilotoById = async (id) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/pilotos/${id}`);
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error(`Piloto con ID ${id} no encontrado.`);
-      }
-      throw new Error(`Error al cargar el piloto con ID ${id}: ${response.statusText}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error en getPilotoById:", error);
-    throw error;
+  const res = await fetch(`${API_BASE_URL}/pilotos/${id}`);
+  if (!res.ok) throw new Error(`Error: ${res.statusText}`);
+  return res.json();
+};
+
+// Crear piloto
+export const crearPiloto = async (piloto) => {
+  const cuerpo = {
+    Nombre: piloto.Nombre || piloto.nombre,
+    Pais: piloto.Pais || piloto.pais || '',
+    Numero: Number(piloto.Numero || piloto.numero),
+    Edad: Number(piloto.Edad || piloto.edad),
+    EscuderiaId: Number(piloto.EscuderiaId || piloto.escuderiaId),
+    UrlImagen: piloto.UrlImagen || piloto.urlImagen || ''
+  };
+
+  const res = await fetch(`${API_BASE_URL}/pilotos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cuerpo),
+  });
+
+  const mensaje = await res.text();
+  if (!res.ok) {
+    console.error("Respuesta del backend:", mensaje);
+    throw new Error(`Error al crear piloto: ${mensaje}`);
   }
+  return JSON.parse(mensaje);
+};
+
+// Actualizar piloto
+export const actualizarPiloto = async (id, piloto) => {
+  const cuerpo = {
+    Nombre: piloto.nombre,
+    Pais: piloto.pais,
+    Numero: Number(piloto.numero),
+    Edad: Number(piloto.edad),
+    EscuderiaId: Number(piloto.escuderiaId),
+    UrlImagen: piloto.urlImagen || ''
+  };
+
+  const res = await fetch(`${API_BASE_URL}/pilotos/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cuerpo),
+  });
+
+  const mensaje = await res.text();
+  if (!res.ok) {
+    console.error("Respuesta del backend:", mensaje);
+    throw new Error(`Error al actualizar piloto: ${mensaje}`);
+  }
+  return JSON.parse(mensaje);
+};
+
+// Borrar piloto
+export const borrarPiloto = async (id) => {
+  const res = await fetch(`${API_BASE_URL}/pilotos/${id}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) throw new Error('Error al borrar piloto');
 };
