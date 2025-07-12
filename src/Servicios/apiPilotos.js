@@ -1,6 +1,7 @@
+
+
 const API_BASE_URL = 'https://f1backend.onrender.com/api';
 
-// Obtener todos los pilotos
 export const getAllPilotos = async () => {
   const res = await fetch(`${API_BASE_URL}/pilotos`);
   if (!res.ok) throw new Error(`Error: ${res.statusText}`);
