@@ -1,7 +1,6 @@
-// src/pages/FormularioCrearPiloto.jsx
 import React, { useEffect, useState } from 'react';
-import { crearPiloto } from '../Servicios/apiPilotos';  // asumí que lo vas a crear
-import { getAllEscuderias } from '../Servicios/apiEscuderias'; // si tenés servicio para escuderías
+import { crearPiloto } from '../Servicios/apiPilotos';
+import { getAllEscuderias } from '../Servicios/apiEscuderias';
 import { useLocation } from 'wouter';
 
 const FormularioCrearPiloto = () => {
@@ -13,6 +12,7 @@ const FormularioCrearPiloto = () => {
     numero: '',
     edad: '',
     escuderiaId: '',
+    ImagenUrl: '', // nuevo campo
   });
 
   const [escuderias, setEscuderias] = useState([]);
@@ -36,14 +36,17 @@ const FormularioCrearPiloto = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    
     const pilotoParaEnviar = {
       Nombre: formData.nombre,
       Pais: formData.pais,
       Numero: Number(formData.numero),
       Edad: Number(formData.edad),
       EscuderiaId: Number(formData.escuderiaId),
+      ImagenUrl: formData.ImagenUrl, // incluir imagen
     };
-
+    
+    console.log("Enviando piloto:", pilotoParaEnviar);
     try {
       await crearPiloto(pilotoParaEnviar);
       navegar('/pilotos');
@@ -105,7 +108,14 @@ const FormularioCrearPiloto = () => {
             </option>
           ))}
         </select>
-
+        <input
+          name="imagenUrl"
+          placeholder="URL de la imagen del piloto"
+          value={formData.imagenUrl}
+          onChange={handleChange}
+          required
+          maxLength={150}
+        />
         <button type="submit">Crear</button>
       </form>
     </div>

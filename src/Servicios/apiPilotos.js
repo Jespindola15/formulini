@@ -37,13 +37,12 @@ export const getPilotoById = async (id) => {
 // Crear piloto
 export const crearPiloto = async (piloto) => {
   const cuerpo = {
-    Nombre: piloto.Nombre || piloto.nombre,
-    Pais: piloto.Pais || piloto.pais || '',
-    Numero: Number(piloto.Numero || piloto.numero),
-    Edad: Number(piloto.Edad || piloto.edad),
-    EscuderiaId: Number(piloto.EscuderiaId || piloto.escuderiaId),
-    // ¡CORREGIDO AQUÍ! Cambiado de UrlImagen a ImagenUrl
-    ImagenUrl: piloto.UrlImagen || piloto.urlImagen || '' 
+    Nombre: piloto.Nombre,
+    Pais: piloto.Pais,
+    Numero: Number(piloto.Numero),
+    Edad: Number(piloto.Edad),
+    EscuderiaId: Number(piloto.EscuderiaId),
+    ImagenUrl: piloto.ImagenUrl, // ✅ corregido
   };
 
   console.log("Enviando a backend:", cuerpo);
@@ -59,25 +58,24 @@ export const crearPiloto = async (piloto) => {
     console.error("Respuesta del backend:", mensaje);
     throw new Error(`Error al crear piloto: ${mensaje}`);
   }
-  
+
   try {
     return JSON.parse(mensaje);
   } catch (e) {
     console.warn("No se pudo parsear la respuesta JSON del backend:", mensaje);
-    return mensaje; // Devuelve el mensaje como texto si no es JSON
+    return mensaje;
   }
 };
 
 // Actualizar piloto
 export const actualizarPiloto = async (id, piloto) => {
   const cuerpo = {
-    Nombre: piloto.nombre,
-    Pais: piloto.pais,
-    Numero: Number(piloto.numero),
-    Edad: Number(piloto.edad),
-    EscuderiaId: Number(piloto.escuderiaId),
-    // ¡CORREGIDO AQUÍ! Cambiado de UrlImagen a ImagenUrl
-    ImagenUrl: piloto.urlImagen || '' 
+    Nombre: piloto.Nombre,
+    Pais: piloto.Pais,
+    Numero: Number(piloto.Numero),
+    Edad: Number(piloto.Edad),
+    EscuderiaId: Number(piloto.EscuderiaId),
+    ImagenUrl: piloto.ImagenUrl, // ✅ corregido
   };
 
   console.log("Actualizando en backend:", cuerpo);
@@ -98,9 +96,10 @@ export const actualizarPiloto = async (id, piloto) => {
     return JSON.parse(mensaje);
   } catch (e) {
     console.warn("No se pudo parsear la respuesta JSON del backend:", mensaje);
-    return mensaje; // Devuelve el mensaje como texto si no es JSON
+    return mensaje;
   }
 };
+
 
 // Borrar piloto
 export const borrarPiloto = async (id) => {

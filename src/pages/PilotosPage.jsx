@@ -1,40 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { getAllPilotos, borrarPiloto } from '../Servicios/apiPilotos';
-import TarjetaPiloto from '../componentes/TarjetaPiloto'; // Asegúrate de que la ruta sea correcta
-import '../Styles/PilotosPage.css';
+import { getAllEscuderias } from '../Servicios/apiEscuderias'; // Importá esto
+import TarjetaPiloto from '../componentes/TarjetaPiloto';
 import Loader from '../componentes/Loader';
-import { useLocation, Link } from 'wouter'; // importá Link para el botón Crear
+import { useLocation, Link } from 'wouter';
 
 const PilotosPage = () => {
   const [pilotos, setPilotos] = useState([]);
+  const [escuderias, setEscuderias] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
   const [, navegar] = useLocation();
 
   useEffect(() => {
-    cargarPilotos();
+    const cargarDatos = async () => {
+      try {
+        const [dataPilotos, dataEscuderias] = await Promise.all([
+          getAllPilotos(),
+          getAllEscuderias(),
+        ]);
+        setPilotos(dataPilotos);
+        setEscuderias(dataEscuderias);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setCargando(false);
+      }
+    };
+    cargarDatos();
   }, []);
 
-  const cargarPilotos = async () => {
-    try {
-      const data = await getAllPilotos();
-      setPilotos(data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setCargando(false);
-    }
-  };
+  // Crear un diccionario para buscar el nombre de escudería por id
+  const escuderiasMap = escuderias.reduce((map, escuderia) => {
+    map[escuderia.id] = escuderia.nombre;
+    return map;
+  }, {});
 
   const handleBorrar = async (id) => {
-    // Reemplazado window.confirm por console.log para depuración
-    console.log(`Intentando borrar piloto con ID: ${id}. (Confirmación simulada)`);
+    console.log(`Intentando borrar piloto con ID: ${id}.`);
     try {
       await borrarPiloto(id);
-      console.log(`Piloto con ID ${id} borrado exitosamente.`);
-      cargarPilotos(); // Recargar la lista de pilotos
+      setPilotos(pilotos.filter(p => p.id !== id));
     } catch (err) {
-      // Reemplazado alert por console.error
       console.error('Error al borrar piloto:', err);
     }
   };
@@ -48,7 +55,6 @@ const PilotosPage = () => {
       <h2 className="page-title">F1 DRIVERS 2025</h2>
       <p className="page-subtitle">Meet the current Formula 1 drivers for the 2025 season</p>
       <div className="grid-pilotos">
-        {/* Tarjeta para crear nuevo piloto */}
         <div className="tarjeta-piloto tarjeta-crear">
           <div className="contenido-crear">
             <span className="icono-mas">＋</span>
@@ -59,17 +65,16 @@ const PilotosPage = () => {
           </div>
         </div>
 
-        {/* Listado de pilotos */}
         {pilotos.map((piloto) => (
           <div key={piloto.id} className="piloto-card-container">
             <TarjetaPiloto
               nombre={piloto.nombre}
-              apellido={piloto.apellido || ''} // Asegúrate de que la API devuelva apellido o maneja como vacío
+              apellido={piloto.apellido || ''}
               numero={piloto.numero}
-              urlImagen={piloto.imagenUrl} // ¡CORREGIDO AQUÍ! Usa piloto.imagenUrl
-              // equipo={piloto.equipo} // Si tu API no devuelve 'equipo', coméntalo o maneja un fallback
-              nacionalidad={piloto.pais || ''} // Tu API usa 'pais' para nacionalidad
+              urlImagen={piloto.imagenUrl}
+              nacionalidad={piloto.pais || ''}
               edad={piloto.edad || ''}
+              escuderiaNombre={escuderiasMap[piloto.escuderiaId] || ''}
             />
             <button onClick={() => navegar(`/pilotos/editar/${piloto.id}`)}>Editar</button>
             <button

@@ -23,12 +23,12 @@ const FormularioEditarPiloto = ({ id }) => {
       try {
         const piloto = await getPilotoById(id);
         setFormData({
-          nombre: piloto.Nombre || "",
-          pais: piloto.Nacionalidad || "",  // asumiendo que en backend está Nacionalidad
-          numero: piloto.Numero?.toString() || "",
-          edad: piloto.Edad?.toString() || "",
-          escuderiaId: piloto.EscuderiaId?.toString() || "",
-          urlImagen: piloto.UrlImagen || ""
+          Nombre: piloto.Nombre || "",
+          Pais: piloto.Pais || "",
+          Numero: piloto.Numero?.toString() || "",
+          Edad: piloto.Edad?.toString() || "",
+          EscuderiaId: piloto.EscuderiaId?.toString() || "",
+          ImagenUrl: piloto.ImagenUrl || ""
         });
       } catch {
         setError("Error al cargar datos del piloto");
@@ -48,12 +48,12 @@ const FormularioEditarPiloto = ({ id }) => {
     e.preventDefault();
 
     const pilotoParaEnviar = {
-      nombre: formData.nombre,
-      nacionalidad: formData.pais,
-      numero: Number(formData.numero),
-      edad: Number(formData.edad),
-      escuderiaId: Number(formData.escuderiaId),
-      urlImagen: formData.urlImagen
+      Nombre: formData.Nombre,
+      Pais: formData.Pais,
+      Numero: Number(formData.Numero),
+      Edad: Number(formData.Edad),
+      EscuderiaId: Number(formData.EscuderiaId),
+      ImagenUrl: formData.ImagenUrl
     };
 
     try {
@@ -73,16 +73,16 @@ const FormularioEditarPiloto = ({ id }) => {
       <h2>Editar Piloto</h2>
       <form onSubmit={handleSubmit}>
         <input
-          name="nombre"
-          value={formData.nombre}
+          name="Nombre"
+          value={formData.Nombre}
           onChange={handleChange}
           required
           placeholder="Nombre"
           maxLength={50}
         />
         <input
-          name="pais"
-          value={formData.pais}
+          name="Pais"
+          value={formData.Pais}
           onChange={handleChange}
           required
           placeholder="País"
@@ -90,8 +90,8 @@ const FormularioEditarPiloto = ({ id }) => {
         />
         <input
           type="number"
-          name="numero"
-          value={formData.numero}
+          name="Numero"
+          value={formData.Numero}
           onChange={handleChange}
           required
           placeholder="Número"
@@ -100,8 +100,8 @@ const FormularioEditarPiloto = ({ id }) => {
         />
         <input
           type="number"
-          name="edad"
-          value={formData.edad}
+          name="Edad"
+          value={formData.Edad}
           onChange={handleChange}
           required
           placeholder="Edad"
@@ -109,8 +109,8 @@ const FormularioEditarPiloto = ({ id }) => {
           max={100}
         />
         <select
-          name="escuderiaId"
-          value={formData.escuderiaId}
+          name="EscuderiaId"
+          value={formData.EscuderiaId}
           onChange={handleChange}
           required
         >
@@ -122,10 +122,12 @@ const FormularioEditarPiloto = ({ id }) => {
           ))}
         </select>
         <input
-          name="urlImagen"
-          value={formData.urlImagen}
+          name="ImagenUrl"
+          value={formData.ImagenUrl}
           onChange={handleChange}
           placeholder="URL de Imagen"
+          maxLength={150}
+          required
         />
         <button type="submit">Guardar</button>
       </form>
