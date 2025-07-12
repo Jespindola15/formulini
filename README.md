@@ -1,6 +1,6 @@
-# 🏁 Formula1Frontend
+# 🏁 Formulini
 
-**Formula1Frontend** es una interfaz web que consume una API de Formula 1, en donde se muestran los pilotos, escuderías y pistas de la temporada 2025 de la Formula 1.
+**Formulini** es una interfaz web que consume una API de Formula 1, en donde se muestran los pilotos, escuderías y pistas de la temporada 2025 de la Formula 1.
 
 ---
 
@@ -11,6 +11,7 @@
 - Visualización de **pistas**.
 - Utilización de una **API REST** de Formula 1.
 - Diseño **responsivo**.
+- Utilizacion de **CRUD**.
 
 ---
 
