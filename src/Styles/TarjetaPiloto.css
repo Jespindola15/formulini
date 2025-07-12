@@ -46,10 +46,10 @@
 
 .numero-piloto {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 8em; /* Tamaño grande para el efecto de marca de agua */
+  font-size: 11em; /* Tamaño grande para el efecto de marca de agua */
   font-weight: 700;
   color: var(--f1-gris-casi-invisible); /* Muy tenue */
   line-height: 1;

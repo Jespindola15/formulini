@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { crearPista } from '../Servicios/apiPistas';
 import { getAllPilotos } from '../Servicios/apiPilotos';
 import { useLocation } from 'wouter';
+import '../Styles/FormularioPiloto.css'; // Reutilizamos los mismos estilos
 
 const FormularioCrearPista = () => {
   const [, navegar] = useLocation();
@@ -33,30 +34,29 @@ const FormularioCrearPista = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const pistaParaEnviar = {
-    Nombre: formData.nombre,
-    Ubicacion: formData.ubicacion,
-    Tipo: formData.tipo,
-    MejorPilotoId: Number(formData.mejorPilotoId),
-    UrlImagen: formData.urlImagen,
+    const pistaParaEnviar = {
+      Nombre: formData.nombre,
+      Ubicacion: formData.ubicacion,
+      Tipo: formData.tipo,
+      MejorPilotoId: Number(formData.mejorPilotoId),
+      UrlImagen: formData.urlImagen,
+    };
+
+    try {
+      await crearPista(pistaParaEnviar);
+      navegar('/pistas');
+    } catch (error) {
+      console.error('Error al crear pista:', error);
+    }
   };
 
-  try {
-    await crearPista(pistaParaEnviar);
-    navegar('/pistas');
-  } catch (error) {
-    console.error('Error al crear pista:', error);
-  }
-};
-
-
   return (
-    <div className="formulario-container">
-      <h2>Crear Nueva Pista</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <h2 className="form-title">Crear Nueva Pista</h2>
+      <form onSubmit={handleSubmit} className="formulario">
         <input
           name="nombre"
           placeholder="Nombre"

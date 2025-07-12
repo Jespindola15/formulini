@@ -1,0 +1,74 @@
+/* src/Styles/FormularioPiloto.css */
+.form-container {
+  background-color: #121212;
+  color: #ffffff;
+  max-width: 600px; /* Aumentado */
+  margin: 50px auto;
+  padding: 40px 30px; /* Más padding */
+  border-radius: 20px;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem; /* Más grande */
+  font-weight: bold;
+  color: #e50914;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Más espacio entre campos */
+}
+
+.formulario input,
+.formulario select {
+  padding: 15px; /* Más espacio interno */
+  font-size: 1.1rem; /* Más grande */
+  border: none;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  outline: none;
+}
+
+.formulario input::placeholder,
+.formulario select {
+  color: #ccc;
+}
+
+.formulario button {
+  padding: 15px;
+  font-size: 1.1rem;
+  background-color: #e50914;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #b00610;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    margin: 20px;
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .form-title {
+    font-size: 1.6rem;
+  }
+
+  .formulario input,
+  .formulario select,
+  .formulario button {
+    font-size: 1rem;
+  }
+}

@@ -87,7 +87,7 @@ h2 {
 }
 
 .tarjeta-pista button:hover {
-  background-color: #00a090; /* Un tono un poco más oscuro al pasar el ratón */
+  background-color: white; /* Un tono un poco más oscuro al pasar el ratón */
   transform: translateY(-2px);
 }
 
@@ -113,7 +113,7 @@ h2 {
 }
 
 .tarjeta-crear:hover {
-  border-color: var(--mercedes-cian);
+  border-color: RED;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -126,7 +126,7 @@ h2 {
 
 .icono-mas {
   font-size: 3em;
-  color: var(--mercedes-cian);
+  color: red;
 }
 
 .tarjeta-crear p {
@@ -136,7 +136,7 @@ h2 {
 }
 
 .tarjeta-crear button {
-  background-color: var(--mercedes-cian);
+  background-color: red; /* Rojo de F1 */
   color: var(--fondo-oscuro);
   padding: 10px 20px;
   border-radius: 8px;

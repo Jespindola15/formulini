@@ -1,7 +1,9 @@
+// src/componentes/FormularioCrearPiloto.jsx
 import React, { useEffect, useState } from 'react';
 import { crearPiloto } from '../Servicios/apiPilotos';
 import { getAllEscuderias } from '../Servicios/apiEscuderias';
 import { useLocation } from 'wouter';
+import '../Styles/FormularioPiloto.css'; // Importá el CSS
 
 const FormularioCrearPiloto = () => {
   const [, navegar] = useLocation();
@@ -12,7 +14,7 @@ const FormularioCrearPiloto = () => {
     numero: '',
     edad: '',
     escuderiaId: '',
-    ImagenUrl: '', // nuevo campo
+    imagenUrl: '',
   });
 
   const [escuderias, setEscuderias] = useState([]);
@@ -35,18 +37,15 @@ const FormularioCrearPiloto = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    
     const pilotoParaEnviar = {
       Nombre: formData.nombre,
       Pais: formData.pais,
       Numero: Number(formData.numero),
       Edad: Number(formData.edad),
       EscuderiaId: Number(formData.escuderiaId),
-      ImagenUrl: formData.ImagenUrl, // incluir imagen
+      ImagenUrl: formData.imagenUrl,
     };
-    
-    console.log("Enviando piloto:", pilotoParaEnviar);
+
     try {
       await crearPiloto(pilotoParaEnviar);
       navegar('/pilotos');
@@ -56,9 +55,9 @@ const FormularioCrearPiloto = () => {
   };
 
   return (
-    <div className="formulario-container">
-      <h2>Crear Nuevo Piloto</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <h2 className="form-title">Crear Nuevo Piloto</h2>
+      <form onSubmit={handleSubmit} className="formulario">
         <input
           name="nombre"
           placeholder="Nombre"
@@ -116,7 +115,7 @@ const FormularioCrearPiloto = () => {
           required
           maxLength={150}
         />
-        <button type="submit">Crear</button>
+        <button type="submit">Crear Piloto</button>
       </form>
     </div>
   );
