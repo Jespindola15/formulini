@@ -9,10 +9,11 @@ const TarjetaPiloto = ({ nombre, apellido, numero, urlImagen, equipo, nacionalid
       <span className="numero-piloto">{numero}</span>
       <img src={urlImagen} alt={`Foto de ${nombre} ${apellido}`} className="imagen-piloto" />
       <h3 className="nombre-piloto">{nombre} {apellido}</h3>
-      <p className="equipo-piloto">{equipo}</p>
+      {/* El equipo no se pasa desde EscuderiaDetail.jsx, por eso lo comento aquí */}
+      {/* <p className="equipo-piloto">{equipo}</p> */}
       {/* NUEVO: Mostrar nacionalidad y edad */}
-      <p className="nacionalidad-piloto">Nacionalidad: {nacionalidad}</p>
-      <p className="edad-piloto">Edad: {edad} años</p>
+      {nacionalidad && <p className="nacionalidad-piloto">Nacionalidad: {nacionalidad}</p>}
+      {edad && <p className="edad-piloto">Edad: {edad} años</p>}
     </div>
   );
 };

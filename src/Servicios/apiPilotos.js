@@ -1,7 +1,7 @@
 // src/Servicios/apiPilotos.js
 
 // ¡¡IMPORTANTE!! Reemplaza esta URL con la URL base de tu backend .NET
-const API_BASE_URL = 'https://f1backend.onrender.com/api/pilotos'; 
+const API_BASE_URL = 'https://f1backend.onrender.com/api'; 
 
 export const getAllPilotos = async () => {
   try {
