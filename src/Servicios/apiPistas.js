@@ -18,19 +18,21 @@ export const getPistaById = async (id) => {
 
 // Crear nueva pista
 export const crearPista = async (pista) => {
-  console.log("Enviando a backend:", pista);
-
+  // Construimos el objeto con las claves en mayúscula inicial y tipo string
   const cuerpo = {
-    pista: {
-      ...pista,
-      tipo: Number(pista.tipo), // convierte tipo a número (int)
-    }
+    Nombre: pista.Nombre || pista.nombre,
+    Ubicacion: pista.Ubicacion || pista.ubicacion,
+    Tipo: pista.Tipo || pista.tipo, // enviar string tal cual
+    MejorPilotoId: Number(pista.MejorPilotoId || pista.mejorPilotoId),
+    UrlImagen: pista.UrlImagen || pista.urlImagen || ''
   };
+
+  console.log("Enviando a backend:", cuerpo);
 
   const res = await fetch(`${API_BASE_URL}/pistas`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(cuerpo),
+    body: JSON.stringify(cuerpo),  // Aquí enviamos el objeto directamente
   });
 
   const mensaje = await res.text();
@@ -44,14 +46,42 @@ export const crearPista = async (pista) => {
 };
 
 
-
 // Actualizar pista existente
 export const actualizarPista = async (id, pista) => {
+  const cuerpo = {
+    Nombre: pista.nombre,
+    Ubicacion: pista.ubicacion,
+    Tipo: pista.tipo,  // ya es string descriptivo
+    MejorPilotoId: pista.mejorPilotoId,
+    UrlImagen: pista.urlImagen || ''
+  };
+
+  console.log("Actualizando en backend:", cuerpo);
+
   const res = await fetch(`${API_BASE_URL}/pistas/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(pista),
+    body: JSON.stringify(cuerpo),  // enviar el objeto directamente
   });
-  if (!res.ok) throw new Error(`Error al actualizar: ${res.statusText}`);
-  return res.json();
+
+  const mensaje = await res.text();
+
+  if (!res.ok) {
+    console.error("Respuesta del backend:", mensaje);
+    throw new Error(`Error al actualizar: ${mensaje}`);
+  }
+
+  return JSON.parse(mensaje);
+};
+
+
+
+
+
+// Borrar pista
+export const borrarPista = async (id) => {
+  const res = await fetch(`${API_BASE_URL}/pistas/${id}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) throw new Error('Error al borrar pista');
 };
