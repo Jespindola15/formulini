@@ -1,12 +1,34 @@
-# React + Vite
+# 🏁 Formula1Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Formula1Frontend** es una interfaz web que consume una API de Formula 1, en donde se muestran los pilotos, escuderías y pistas de la temporada 2025 de la Formula 1.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Características
 
-## Expanding the ESLint configuration
+- Visualización de **pilotos**.
+- Visualización de **escuderías**.
+- Visualización de **pistas**.
+- Utilización de una **API REST** de Formula 1.
+- Diseño **responsivo**.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+Tecnologías utilizadas
+
+⚛️ React.jsx 
+🌐 Fetch API
+🧭 React Wouter
+🎨 CSS Modules
+⚡ Vite
+
+---
+
+## 📁 Estructura del proyecto
+
+src/                    
+├── servicios/         # Lógica para el consumo de la API
+├── styles/            # Estilos
+├── components/        # Componentes para los fomrularios, cards, navbar, etc
+├── pages/             # Páginas principales
+└── App.jsx            # Componente principal
