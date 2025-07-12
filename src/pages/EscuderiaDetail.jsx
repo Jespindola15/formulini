@@ -172,7 +172,7 @@ const EscuderiaDetail = () => {
               nombre={piloto.nombre}
               apellido={piloto.apellido || ''} // Asegúrate de que la API devuelva apellido o maneja como vacío
               numero={piloto.numero}
-              urlImagen={piloto.urlImagen || `/imagenes/pilotos/${piloto.id}.png`} // Fallback si la API no tiene urlImagen
+              urlImagen={piloto.imagenUrl} // ¡CORREGIDO AQUÍ! Usa piloto.imagenUrl
               nacionalidad={piloto.pais || ''} // Pasa la nacionalidad desde la API (tu API usa 'pais')
               edad={piloto.edad || ''} // Pasa la edad desde la API
             />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllPistas, borrarPista } from '../Servicios/apiPistas'; // Importá borrarPista también
 import { getAllPilotos } from '../Servicios/apiPilotos';
 import '../Styles/PistasPage.css';
-import Loader from '../componentes/Loader';
+import Loader from '../componentes/Loader'; // Asegúrate de que la ruta sea correcta
 import { Link } from 'wouter';
 
 const PistasPage = () => {
@@ -36,14 +36,16 @@ const PistasPage = () => {
   };
 
   const handleBorrar = async (id) => {
-    if (!window.confirm('¿Estás seguro que quieres borrar esta pista?')) return;
+    // Reemplazado window.confirm por console.log
+    console.log(`Intentando borrar pista con ID: ${id}`);
     try {
       await borrarPista(id);
+      console.log(`Pista con ID ${id} borrada exitosamente.`);
       // Recargamos las pistas después de borrar
       cargarDatos();
     } catch (err) {
-      alert('Error al borrar la pista.');
-      console.error(err);
+      // Reemplazado alert por console.error
+      console.error('Error al borrar la pista:', err);
     }
   };
 
@@ -65,7 +67,8 @@ const PistasPage = () => {
 
         {pistas.map((pista) => (
           <div key={pista.id} className="tarjeta-pista tarjeta-existente">
-            <img src={pista.urlImagen || '/imagenes/default.jpg'} alt={pista.nombre} className="imagen-pista" />
+            {/* Asegúrate de que pista.imagenUrl sea la URL completa de la imagen */}
+            <img src={pista.imagenUrl || '/imagenes/default.jpg'} alt={pista.nombre} className="imagen-pista" />
             <h3>{pista.nombre}</h3>
             <p>{pista.ubicacion}</p>
             <p>Tipo: {pista.tipo}</p>

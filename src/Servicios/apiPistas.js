@@ -24,7 +24,8 @@ export const crearPista = async (pista) => {
     Ubicacion: pista.Ubicacion || pista.ubicacion,
     Tipo: pista.Tipo || pista.tipo, // enviar string tal cual
     MejorPilotoId: Number(pista.MejorPilotoId || pista.mejorPilotoId),
-    UrlImagen: pista.UrlImagen || pista.urlImagen || ''
+    // ¡CORREGIDO AQUÍ! Cambiado de UrlImagen a ImagenUrl para coincidir con el backend
+    ImagenUrl: pista.UrlImagen || pista.urlImagen || '' // Asegura que siempre se envíe, incluso si está vacío
   };
 
   console.log("Enviando a backend:", cuerpo);
@@ -42,7 +43,13 @@ export const crearPista = async (pista) => {
     throw new Error(`Error al crear: ${mensaje}`);
   }
 
-  return JSON.parse(mensaje);
+  // Intenta parsear el mensaje solo si la respuesta es exitosa y no está vacía
+  try {
+    return JSON.parse(mensaje);
+  } catch (e) {
+    console.warn("No se pudo parsear la respuesta JSON del backend:", mensaje);
+    return mensaje; // Devuelve el mensaje como texto si no es JSON
+  }
 };
 
 
@@ -53,7 +60,8 @@ export const actualizarPista = async (id, pista) => {
     Ubicacion: pista.ubicacion,
     Tipo: pista.tipo,  // ya es string descriptivo
     MejorPilotoId: pista.mejorPilotoId,
-    UrlImagen: pista.urlImagen || ''
+    // ¡CORREGIDO AQUÍ! Cambiado de UrlImagen a ImagenUrl para coincidir con el backend
+    ImagenUrl: pista.urlImagen || '' // Asegura que siempre se envíe, incluso si está vacío
   };
 
   console.log("Actualizando en backend:", cuerpo);
@@ -71,11 +79,14 @@ export const actualizarPista = async (id, pista) => {
     throw new Error(`Error al actualizar: ${mensaje}`);
   }
 
-  return JSON.parse(mensaje);
+  // Intenta parsear el mensaje solo si la respuesta es exitosa y no está vacía
+  try {
+    return JSON.parse(mensaje);
+  } catch (e) {
+    console.warn("No se pudo parsear la respuesta JSON del backend:", mensaje);
+    return mensaje; // Devuelve el mensaje como texto si no es JSON
+  }
 };
-
-
-
 
 
 // Borrar pista

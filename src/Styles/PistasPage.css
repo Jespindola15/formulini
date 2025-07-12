@@ -1,102 +1,158 @@
 /* src/Styles/PistasPage.css */
 
 .pistas-page-container {
-  padding: 2rem;
-  background-color: #111;
-  color: #fff;
-  min-height: 100vh;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--texto-claro);
+}
+
+h2 {
+  font-size: 2.8em;
+  color: var(--texto-claro);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .grid-pistas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta el tamaño de las tarjetas */
+  gap: 30px;
+  justify-content: center;
+  padding: 0 20px; /* Padding para que no se peguen a los bordes */
 }
 
 .tarjeta-pista {
+  background-color: var(--card-background); /* Usa la variable de fondo de tarjeta */
+  padding: 20px;
   border-radius: 12px;
-  padding: 1.2rem;
-  background-color: #1c1c1c;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--card-border); /* Usa la variable de borde de tarjeta */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  transition: transform 0.2s ease;
 }
 
 .tarjeta-pista:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
-.tarjeta-pista img.imagen-pista {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
+/* Estilos específicos para la imagen de la pista */
+.imagen-pista {
+  width: 100%; /* Ocupa todo el ancho de la tarjeta */
+  height: 180px; /* Altura fija para las imágenes de pista */
+  object-fit: cover; /* Cubre el área manteniendo la relación de aspecto */
+  border-radius: 8px; /* Bordes redondeados para la imagen */
+  margin-bottom: 15px;
+  filter: brightness(0.9); /* Ligeramente más oscura para que el texto resalte */
+  transition: filter 0.3s ease;
 }
 
-.tarjeta-crear {
-  background-color: #292929;
-  border: 2px dashed #888;
-  justify-content: center;
+.tarjeta-pista:hover .imagen-pista {
+  filter: brightness(1); /* Brillo normal al pasar el ratón */
+}
+
+.tarjeta-pista h3 {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--texto-claro);
+  margin: 0 0 10px 0;
+}
+
+.tarjeta-pista p {
+  font-size: 0.9em;
+  color: var(--f1-gris-claro);
+  margin: 5px 0;
+}
+
+/* Estilos para los botones */
+.tarjeta-pista button {
+  background-color: var(--mercedes-cian); /* Color de acción */
+  color: var(--fondo-oscuro); /* Texto oscuro para contraste */
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-top: 15px; /* Espacio superior para los botones */
+}
+
+.tarjeta-pista button:hover {
+  background-color: #00a090; /* Un tono un poco más oscuro al pasar el ratón */
+  transform: translateY(-2px);
+}
+
+/* Estilos para el botón de borrar */
+.tarjeta-pista button[style*="background-color: red"] {
+  background-color: #e10600 !important; /* Rojo de F1 para borrar */
+}
+
+.tarjeta-pista button[style*="background-color: red"]:hover {
+  background-color: #c00500 !important;
+}
+
+/* Estilos para la tarjeta de "Agregar nueva pista" */
+.tarjeta-crear {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed var(--f1-gris-claro); /* Borde punteado */
+  background-color: rgba(255, 255, 255, 0.05); /* Fondo más claro para destacar */
+  cursor: pointer;
+  min-height: 250px; /* Altura similar a las otras tarjetas */
+}
+
+.tarjeta-crear:hover {
+  border-color: var(--mercedes-cian);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .contenido-crear {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 
 .icono-mas {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  color: #0f0;
+  font-size: 3em;
+  color: var(--mercedes-cian);
 }
 
-.tarjeta-pista button {
-  margin-top: 0.8rem;
-  padding: 0.5rem 1rem;
-  background-color: #e50914;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
+.tarjeta-crear p {
+  font-size: 1.1em;
+  color: var(--f1-gris-claro);
+  margin: 0;
 }
 
-.tarjeta-pista button:hover {
-  background-color: #b00610;
+.tarjeta-crear button {
+  background-color: var(--mercedes-cian);
+  color: var(--fondo-oscuro);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1em;
 }
 
-.formulario-container {
-  padding: 2rem;
-  background-color: #111;
-  color: white;
-  min-height: 100vh;
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .grid-pistas {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    padding: 0 10px;
+  }
 }
 
-form input {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background: #222;
-  color: white;
-}
-
-form button {
-  background-color: #0f62fe;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+@media (min-width: 1024px) {
+  .grid-pistas {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+  }
 }
