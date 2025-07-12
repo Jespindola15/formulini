@@ -24,7 +24,6 @@ export const crearPista = async (pista) => {
     Ubicacion: pista.Ubicacion || pista.ubicacion,
     Tipo: pista.Tipo || pista.tipo, // enviar string tal cual
     MejorPilotoId: Number(pista.MejorPilotoId || pista.mejorPilotoId),
-    // ¡CORREGIDO AQUÍ! Cambiado de UrlImagen a ImagenUrl para coincidir con el backend
     ImagenUrl: pista.UrlImagen || pista.urlImagen || '' // Asegura que siempre se envíe, incluso si está vacío
   };
 
@@ -60,7 +59,6 @@ export const actualizarPista = async (id, pista) => {
     Ubicacion: pista.ubicacion,
     Tipo: pista.tipo,  // ya es string descriptivo
     MejorPilotoId: pista.mejorPilotoId,
-    // ¡CORREGIDO AQUÍ! Cambiado de UrlImagen a ImagenUrl para coincidir con el backend
     ImagenUrl: pista.urlImagen || '' // Asegura que siempre se envíe, incluso si está vacío
   };
 
