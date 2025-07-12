@@ -1,0 +1,115 @@
+// src/pages/FormularioCrearPiloto.jsx
+import React, { useEffect, useState } from 'react';
+import { crearPiloto } from '../Servicios/apiPilotos';  // asumí que lo vas a crear
+import { getAllEscuderias } from '../Servicios/apiEscuderias'; // si tenés servicio para escuderías
+import { useLocation } from 'wouter';
+
+const FormularioCrearPiloto = () => {
+  const [, navegar] = useLocation();
+
+  const [formData, setFormData] = useState({
+    nombre: '',
+    pais: '',
+    numero: '',
+    edad: '',
+    escuderiaId: '',
+  });
+
+  const [escuderias, setEscuderias] = useState([]);
+
+  useEffect(() => {
+    const fetchEscuderias = async () => {
+      try {
+        const data = await getAllEscuderias();
+        setEscuderias(data);
+      } catch (error) {
+        console.error('Error al cargar escuderías:', error);
+      }
+    };
+    fetchEscuderias();
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const pilotoParaEnviar = {
+      Nombre: formData.nombre,
+      Pais: formData.pais,
+      Numero: Number(formData.numero),
+      Edad: Number(formData.edad),
+      EscuderiaId: Number(formData.escuderiaId),
+    };
+
+    try {
+      await crearPiloto(pilotoParaEnviar);
+      navegar('/pilotos');
+    } catch (error) {
+      console.error('Error al crear piloto:', error);
+    }
+  };
+
+  return (
+    <div className="formulario-container">
+      <h2>Crear Nuevo Piloto</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          name="nombre"
+          placeholder="Nombre"
+          value={formData.nombre}
+          onChange={handleChange}
+          required
+          maxLength={50}
+        />
+        <input
+          name="pais"
+          placeholder="País"
+          value={formData.pais}
+          onChange={handleChange}
+          required
+          maxLength={50}
+        />
+        <input
+          type="number"
+          name="numero"
+          placeholder="Número"
+          value={formData.numero}
+          onChange={handleChange}
+          required
+          min={1}
+          max={100}
+        />
+        <input
+          type="number"
+          name="edad"
+          placeholder="Edad"
+          value={formData.edad}
+          onChange={handleChange}
+          required
+          min={18}
+          max={100}
+        />
+        <select
+          name="escuderiaId"
+          value={formData.escuderiaId}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Seleccionar Escudería</option>
+          {escuderias.map((escuderia) => (
+            <option key={escuderia.id} value={escuderia.id}>
+              {escuderia.nombre}
+            </option>
+          ))}
+        </select>
+
+        <button type="submit">Crear</button>
+      </form>
+    </div>
+  );
+};
+
+export default FormularioCrearPiloto;
