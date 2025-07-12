@@ -1,20 +1,17 @@
 // src/Servicios/apiPilotos.js
 
 // ¡¡IMPORTANTE!! Reemplaza esta URL con la URL base de tu backend .NET
-const API_BASE_URL = 'https://f1backend.onrender.com/api/pilotos'; 
+// src/Servicios/apiPilotos.js
 
+const API_BASE_URL = 'https://f1backend.onrender.com/api';
+
+// Obtener todos los pilotos
 export const getAllPilotos = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/pilotos`);
-    if (!response.ok) {
-      throw new Error(`Error al cargar los pilotos: ${response.statusText}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error en getAllPilotos:", error);
-    throw error;
-  }
+  const res = await fetch(`${API_BASE_URL}/pilotos`);
+  if (!res.ok) throw new Error(`Error: ${res.statusText}`);
+  return res.json();
 };
+
 
 export const getPilotoById = async (id) => {
   try {
