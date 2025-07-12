@@ -1,7 +1,9 @@
+// src/pages/FormularioEditarPista.jsx
 import React, { useEffect, useState } from "react";
 import { getPistaById, actualizarPista } from "../Servicios/apiPistas";
 import { getAllPilotos } from "../Servicios/apiPilotos";
 import { useLocation } from "wouter";
+import "../Styles/FormularioPiloto.css"; // mismo estilo
 
 const TIPOS = [
   { id: 1, nombre: "Callejero" },
@@ -31,7 +33,7 @@ const FormularioEditarPista = ({ id }) => {
         setFormData({
           nombre: pista.Nombre || "",
           ubicacion: pista.Ubicacion || "",
-          tipo: pista.Tipo?.toString() || "", // convertir a string para el select
+          tipo: pista.Tipo?.toString() || "",
           mejorPilotoId: pista.MejorPilotoId?.toString() || "",
           urlImagen: pista.UrlImagen || ""
         });
@@ -48,39 +50,36 @@ const FormularioEditarPista = ({ id }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  const tipoSeleccionado = TIPOS.find(t => t.id.toString() === formData.tipo)?.nombre || "";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const pistaParaEnviar = {
-    nombre: formData.nombre,
-    ubicacion: formData.ubicacion,
-    tipo: tipoSeleccionado,
-    mejorPilotoId: Number(formData.mejorPilotoId),
-    urlImagen: formData.urlImagen
+    const tipoSeleccionado = TIPOS.find(t => t.id.toString() === formData.tipo)?.nombre || "";
+
+    const pistaParaEnviar = {
+      nombre: formData.nombre,
+      ubicacion: formData.ubicacion,
+      tipo: tipoSeleccionado,
+      mejorPilotoId: Number(formData.mejorPilotoId),
+      urlImagen: formData.urlImagen
+    };
+
+    try {
+      await actualizarPista(id, pistaParaEnviar);
+      navegar("/pistas");
+    } catch (err) {
+      setError("Error al guardar la pista");
+      console.error(err);
+    }
   };
-
-  console.log("Datos a enviar:", pistaParaEnviar);
-
-  try {
-    await actualizarPista(id, pistaParaEnviar);
-    navegar("/pistas");
-  } catch (err) {
-    setError("Error al guardar la pista");
-    console.error(err);
-  }
-};
-
-
 
   if (error) return <p>{error}</p>;
   if (!formData) return <p>Cargando...</p>;
 
   return (
-    <div className="formulario-container">
-      <h2>Editar Pista</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <h2 className="form-title">Editar Pista</h2>
+      <form onSubmit={handleSubmit} className="formulario">
         <input
           name="nombre"
           value={formData.nombre}

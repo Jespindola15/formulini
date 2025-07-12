@@ -1,7 +1,9 @@
+// src/componentes/FormularioEditarPiloto.jsx
 import React, { useEffect, useState } from "react";
 import { getPilotoById, actualizarPiloto } from "../Servicios/apiPilotos";
 import { getAllEscuderias } from "../Servicios/apiEscuderias";
 import { useLocation } from "wouter";
+import "../Styles/FormularioPiloto.css"; 
 
 const FormularioEditarPiloto = ({ id }) => {
   const [, navegar] = useLocation();
@@ -28,7 +30,7 @@ const FormularioEditarPiloto = ({ id }) => {
           Numero: piloto.Numero?.toString() || "",
           Edad: piloto.Edad?.toString() || "",
           EscuderiaId: piloto.EscuderiaId?.toString() || "",
-          ImagenUrl: piloto.ImagenUrl || ""
+          ImagenUrl: piloto.ImagenUrl || "",
         });
       } catch {
         setError("Error al cargar datos del piloto");
@@ -53,7 +55,7 @@ const FormularioEditarPiloto = ({ id }) => {
       Numero: Number(formData.Numero),
       Edad: Number(formData.Edad),
       EscuderiaId: Number(formData.EscuderiaId),
-      ImagenUrl: formData.ImagenUrl
+      ImagenUrl: formData.ImagenUrl,
     };
 
     try {
@@ -69,9 +71,9 @@ const FormularioEditarPiloto = ({ id }) => {
   if (!formData) return <p>Cargando...</p>;
 
   return (
-    <div className="formulario-container">
-      <h2>Editar Piloto</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <h2 className="form-title">Editar Piloto</h2>
+      <form onSubmit={handleSubmit} className="formulario">
         <input
           name="Nombre"
           value={formData.Nombre}
