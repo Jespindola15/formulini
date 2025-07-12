@@ -1,7 +1,7 @@
 // src/Servicios/apiPistas.js
 
 // ¡¡IMPORTANTE!! Reemplaza esta URL con la URL base de tu backend .NET
-const API_BASE_URL = 'http://localhost:5000/api'; 
+const API_BASE_URL = 'https://f1backend.onrender.com/api/pistas'; 
 
 export const getAllPistas = async () => {
   try {
@@ -34,5 +34,3 @@ export const getPistaById = async (id) => {
   
 };
 
-export const updatePista = async (id, pistaActualizada) => { /* PUT /pistas/:id */ };
-export const deletePista = async (id) => { /* DELETE /pistas/:id */ };
