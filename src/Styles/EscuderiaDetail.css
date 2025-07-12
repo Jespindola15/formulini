@@ -1,37 +1,44 @@
 /* src/Styles/EscuderiaDetail.css */
-.contenedor-pagina-escuderia {
-  display: grid;
-  grid-template-columns: 1fr; /* Por defecto, una sola columna para móviles */
-  gap: 40px;
-  padding: 20px; /* Padding general de la página para móviles */
-  color: var(--texto-claro);
-  max-width: 1200px; /* Ancho máximo para centrar el contenido */
-  margin: 0 auto; /* Centra el contenedor en la página */
-  position: relative;
-  overflow: hidden; /* Evita el scroll interno si los elementos se desbordan */
-  min-height: calc(100vh - var(--navbar-height) - 40px); /* Ajusta para que quepa sin scroll */
-  z-index: 0; /* Asegura que el contenedor tenga un contexto de apilamiento */
 
-  /* Estilos para la imagen de fondo dinámica */
-  background-size: cover; /* Cubre todo el contenedor */
-  background-position: center center; /* Centra la imagen */
-  background-repeat: no-repeat; /* No repite la imagen */
-  background-attachment: fixed; /* Efecto de paralaje al hacer scroll */
-  background-color: var(--fondo-oscuro); /* Color de respaldo si la imagen no carga */
+/* Contenedor principal de la página de la escudería */
+.contenedor-pagina-escuderia {
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding: 20px;
+  color: var(--texto-claro);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh; /* Cambio: se asegura que ocupe toda la altura de pantalla */
+  z-index: 0;
 }
 
-/* Pseudo-elemento ::after para el degradado oscuro superpuesto */
-.contenedor-pagina-escuderia::after {
+/* Fondo dinámico con degradados */
+.contenedor-pagina-escuderia::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Capa oscura sólida con transparencia */
-  z-index: -1; /* Asegura que esté sobre la imagen de fondo pero debajo del contenido */
+  background: radial-gradient(circle at 70% 50%, var(--team-main-color) 0%, rgba(0, 0, 0, 0) 50%),
+              radial-gradient(circle at 30% 80%, rgba(150, 150, 150, 0.01) 0%, rgba(0, 0, 0, 0) 60%),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  z-index: -1;
+  opacity: 0.6;
 }
 
+/* Secciones */
+.encabezado-escuderia,
+.display-coche-escuderia,
+.seccion-pilotos-escuderia {
+  padding: 15px;
+  border-radius: 12px;
+  z-index: 1;
+}
 
 .encabezado-escuderia {
   text-align: left;
@@ -39,15 +46,10 @@
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
-  margin-bottom: 30px;
-  /* Añadimos estilos de caja para el encabezado para que destaque sobre el fondo */
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.4); /* Fondo más oscuro para el encabezado */
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px); /* Efecto de desenfoque para el fondo detrás del encabezado */
-  z-index: 1; /* Asegura que el encabezado esté por encima del fondo y su overlay */
+  background-color: rgba(255, 255, 255, 0.02); 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px); 
 }
 
 .logo-escuderia {
@@ -60,113 +62,111 @@
 .nombre-escuderia {
   font-size: 2.5em;
   font-weight: 700;
-  color: var(--mercedes-cian); /* Puedes ajustar este color o hacerlo dinámico si tu API lo proporciona */
+  color: var(--team-main-color);
   margin: 0;
+  text-shadow: 0 0 8px var(--team-main-color);
 }
 
-.detalle-escuderia { /* Para País y Año de Fundación */
+.detalle-escuderia {
   font-size: 1em;
   color: var(--f1-gris-claro);
   margin: 0;
 }
 
-/* Contenedor del coche - Asegura que ocupe su espacio */
 .display-coche-escuderia {
-    grid-area: car; /* Se posiciona en el área 'car' del grid */
-    display: flex; /* Usamos flexbox para centrar la imagen dentro de su área */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    padding: 0; /* Eliminamos padding si el grid lo maneja */
-    overflow: hidden; /* Importante para que el auto grande no cause scroll */
-    /* Añadimos estilos de caja para el coche */
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo más oscuro para el coche */
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    z-index: 1; /* Asegura que el coche esté por encima del fondo y su overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Ajuste del brillo del coche para que resalte más */
 .display-coche-escuderia .imagen-coche {
-  max-width: 100%; /* Asegura que la imagen no se desborde */
+  max-width: 95%;
   height: auto;
-  filter: drop-shadow(0 0 40px var(--glow-color)); /* Sombra para resaltar el coche */
+  filter: drop-shadow(0 0 50px var(--team-main-color));
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
-/* Sección de pilotos */
+.display-coche-escuderia .imagen-coche:hover {
+  transform: scale(1.08);
+}
+
 .seccion-pilotos-escuderia {
-    grid-area: drivers; /* Se posiciona en el área 'drivers' del grid */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centra las tarjetas de pilotos en móvil */
-    gap: 30px;
-    margin-top: 40px; /* Espacio encima de los pilotos en móvil */
-    /* Añadimos estilos de caja para la sección de pilotos para que destaque sobre el fondo */
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo más oscuro para la sección de pilotos */
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px); /* Efecto de desenfoque para el fondo detrás de la sección de pilotos */
-    z-index: 1; /* Asegura que la sección de pilotos esté por encima del fondo y su overlay */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 
-/* Media queries para pantallas más grandes (Desktop) */
-@media (min-width: 768px) {
+/* ✅ MEJORAS PARA MÓVILES */
+@media (max-width: 640px) {
   .contenedor-pagina-escuderia {
-    /* Definimos 3 columnas para el layout de desktop:
-       1. Izquierda para encabezado.
-       2. Centro para el coche.
-       3. Derecha para los pilotos. */
-    grid-template-columns: 1fr 2fr 1.5fr; /* Ajusta estas proporciones para el balance deseado */
-
-    /* Definimos 2 filas para el layout de desktop:
-       1. Arriba para encabezado y coche.
-       2. Abajo para pilotos. */
-    grid-template-rows: auto 1fr; /* auto para el contenido, 1fr para el espacio flexible */
-
-    grid-template-areas:
-      "header car drivers" /* Encabezado, Coche, Pilotos en la misma fila */
-      ".      .   .";      /* Fila vacía o para contenido futuro si se expande */
-
-    gap: 20px 40px; /* Espacio vertical y horizontal entre las áreas del grid */
-    padding: 40px; /* Más padding en desktop para que no esté pegado a los bordes */
-    min-height: calc(100vh - var(--navbar-height) - 80px); /* Ajusta para que quepa sin scroll (80px es 2*padding) */
+    padding: 16px;
+    gap: 24px;
+    min-height: 100vh; /* Asegura fondo completo en móvil */
   }
 
-  /* Posicionamiento de los elementos dentro del grid */
+  .encabezado-escuderia {
+    padding: 15px;
+  }
+
+  .logo-escuderia {
+    width: 120px;
+  }
+
+  .nombre-escuderia {
+    font-size: 2em;
+  }
+
+  .detalle-escuderia {
+    font-size: 0.95em;
+  }
+
+  .seccion-pilotos-escuderia {
+    flex-direction: column; /* Pilotos uno debajo del otro */
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 20px;
+  }
+}
+
+/* VISTA DESKTOP */
+@media (min-width: 768px) {
+  .contenedor-pagina-escuderia {
+    grid-template-columns: 1fr 1.8fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "header car"
+      "drivers drivers";
+    gap: 20px 40px;
+    padding: 40px;
+    min-height: calc(100vh - var(--navbar-height) - 80px);
+  }
+
   .encabezado-escuderia {
     grid-area: header;
-    align-self: start; /* Alinea el contenido al inicio de su celda (arriba) */
-    justify-self: start; /* Alinea el contenido al inicio de su celda (izquierda) */
-    margin-bottom: 0;
-    padding-top: 20px; /* Pequeño padding para bajarlo un poco desde el top si es necesario */
+    align-self: start;
+    justify-self: start;
+    padding-top: 20px;
   }
 
   .display-coche-escuderia {
     grid-area: car;
-    align-self: center; /* Centra el coche verticalmente en su área del grid */
-    justify-self: center; /* Centra el coche horizontalmente en su área del grid */
-    /* No necesita grid-row/column span si está en una sola fila definida */
-    padding-right: 20px; /* Ajuste para que el coche no se pegue al borde derecho */
+    align-self: center;
+    justify-self: start;
+    padding-left: 20px;
   }
 
   .seccion-pilotos-escuderia {
     grid-area: drivers;
-    align-self: start; /* Alinea el bloque de pilotos al inicio de su celda (arriba) */
-    justify-self: end; /* Alinea el bloque de pilotos al final de su celda (derecha) */
-    margin-top: 0; /* El grid maneja el espaciado */
-    padding-top: 0; /* No padding superior si el grid ya lo maneja */
-    flex-direction: column; /* Para que las tarjetas de piloto se muestren en una columna compacta */
-    align-items: flex-end; /* Alinea las tarjetas a la derecha */
-    gap: 20px; /* Espacio entre las tarjetas de piloto */
+    align-self: start;
+    justify-self: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
   }
-}
-
-/* Media query para pantallas muy grandes, si es necesario */
-@media (min-width: 1400px) {
-    .contenedor-pagina-escuderia {
-        max-width: 1600px; /* Permite que el contenido se extienda un poco más */
-    }
 }

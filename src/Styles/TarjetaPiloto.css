@@ -32,12 +32,12 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--f1-rojo); /* Puedes usar un color genérico o del equipo */
+  border: 3px solid var(--team-main-color); /* ¡AHORA DINÁMICO! Usa el color principal del equipo */
   margin-bottom: 15px;
   filter: grayscale(0.1) brightness(0.95);
   transition: filter 0.3s ease;
-  position: relative;
-  z-index: 2; /* Asegura que esté por encima del número */
+  position: relative; /* Para asegurar que esté por encima del número */
+  z-index: 2; /* Asegura que la imagen esté por encima del número */
 }
 
 .tarjeta-piloto:hover .imagen-piloto {
@@ -46,12 +46,12 @@
 
 .numero-piloto {
   position: absolute;
-  top: 60%;
-  left: 50%;
+  top: 50%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
   transform: translate(-50%, -50%);
-  font-size: 11em; /* Tamaño grande para el efecto de marca de agua */
+  font-size: 8em; /* Tamaño grande para el efecto de marca de agua */
   font-weight: 700;
-  color: var(--f1-gris-casi-invisible); /* Muy tenue */
+  color: rgba(255, 255, 255, 0.03); /* Muy tenue */
   line-height: 1;
   z-index: 1; /* Detrás de la imagen pero delante del fondo */
   pointer-events: none;
@@ -62,7 +62,7 @@
   font-weight: 700;
   color: var(--texto-claro); /* Blanco brillante */
   margin: 10px 0 5px 0;
-  position: relative;
+  position: relative; /* Asegura que esté por encima del número */
   z-index: 3;
 }
 
