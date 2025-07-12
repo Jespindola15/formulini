@@ -1,11 +1,10 @@
 // src/Servicios/apiEscuderias.js
 
-// ¡¡IMPORTANTE!! Reemplaza esta URL con la URL base de tu backend .NET
 const API_BASE_URL = 'https://f1backend.onrender.com/api'; 
 
-export const getEscuderiaById = async (idEscuderia) => { // <-- CAMBIADO: nombre de la función y parámetro
+export const getEscuderiaById = async (idEscuderia) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/escuderias/${idEscuderia}`); // <-- CAMBIADO: Usa el ID numérico
+    const response = await fetch(`${API_BASE_URL}/escuderias/${idEscuderia}`);
     if (!response.ok) {
       // Manejo de errores HTTP
       if (response.status === 404) {
@@ -15,8 +14,8 @@ export const getEscuderiaById = async (idEscuderia) => { // <-- CAMBIADO: nombre
     }
     return await response.json();
   } catch (error) {
-    console.error("Error en getEscuderiaById:", error); // <-- CAMBIADO
-    throw error; // Propaga el error para que el componente que llama lo maneje
+    console.error("Error en getEscuderiaById:", error);
+    throw error;
   }
 };
 
@@ -32,5 +31,3 @@ export const getAllEscuderias = async () => {
     throw error;
   }
 };
-
-// Puedes añadir más funciones aquí para crear, editar, eliminar escuderías si las necesitas
