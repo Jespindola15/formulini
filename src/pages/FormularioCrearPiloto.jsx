@@ -12,7 +12,7 @@ const FormularioCrearPiloto = () => {
     numero: '',
     edad: '',
     escuderiaId: '',
-    ImagenUrl: '', // nuevo campo
+    imagenUrl: '', // campo para imagen del piloto, minúscula
   });
 
   const [escuderias, setEscuderias] = useState([]);
@@ -36,17 +36,16 @@ const FormularioCrearPiloto = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     const pilotoParaEnviar = {
       Nombre: formData.nombre,
       Pais: formData.pais,
       Numero: Number(formData.numero),
       Edad: Number(formData.edad),
       EscuderiaId: Number(formData.escuderiaId),
-      ImagenUrl: formData.ImagenUrl, // incluir imagen
+      ImagenUrl: formData.imagenUrl, // aquí la url de la imagen del piloto
     };
-    
-    console.log("Enviando piloto:", pilotoParaEnviar);
+
+    console.log('Enviando piloto:', pilotoParaEnviar);
     try {
       await crearPiloto(pilotoParaEnviar);
       navegar('/pilotos');
