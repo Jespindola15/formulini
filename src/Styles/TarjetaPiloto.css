@@ -9,17 +9,16 @@
 }
 
 .tarjeta-piloto {
-  background-color: var(--card-background); /* Usa la variable */
-  padding: 20px;
+  background-color: var(--card-background); 
+  padding: 1px;
   border-radius: 12px;
   text-align: center;
   width: 220px;
   position: relative;
-  overflow: hidden; /* Importante para que el número grande no se salga */
+  overflow: hidden; 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid var(--card-border); /* Usa la variable */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
-  cursor: pointer; /* Indica que es clicable */
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .tarjeta-piloto:hover {
@@ -28,16 +27,16 @@
 }
 
 .imagen-piloto {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--team-main-color); /* ¡AHORA DINÁMICO! Usa el color principal del equipo */
+  border: 3px solid var(--team-main-color);
   margin-bottom: 15px;
   filter: grayscale(0.1) brightness(0.95);
   transition: filter 0.3s ease;
-  position: relative; /* Para asegurar que esté por encima del número */
-  z-index: 2; /* Asegura que la imagen esté por encima del número */
+  position: relative; 
+  z-index: 2; 
 }
 
 .tarjeta-piloto:hover .imagen-piloto {
@@ -46,32 +45,32 @@
 
 .numero-piloto {
   position: absolute;
-  top: 50%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
+  top: 50%; 
+  left: 50%; 
   transform: translate(-50%, -50%);
-  font-size: 13em; /* Tamaño grande para el efecto de marca de agua */
+  font-size: 11em; 
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.03); /* Muy tenue */
+  color: rgba(255, 255, 255, 0.03);
   line-height: 1;
-  z-index: 1; /* Detrás de la imagen pero delante del fondo */
+  z-index: 1; 
   pointer-events: none;
 }
 
 .nombre-piloto {
   font-size: 1.5em;
   font-weight: 700;
-  color: var(--texto-claro); /* Blanco brillante */
+  color: var(--texto-claro); 
   margin: 10px 0 5px 0;
-  position: relative; /* Asegura que esté por encima del número */
+  position: relative; 
   z-index: 3;
 }
 
-.equipo-piloto, .nacionalidad-piloto, .edad-piloto { /* Añadimos las nuevas clases */
+.equipo-piloto, .nacionalidad-piloto, .edad-piloto { 
   font-size: 0.9em;
-  color: var(--f1-gris-tenue); /* Gris muy tenue */
+  color: var(--f1-gris-tenue); 
   position: relative;
   z-index: 3;
-  margin: 2px 0; /* Espaciado entre las nuevas líneas */
+  margin: 2px 0;
 }
 
 /* Estilos para el grid general de pilotos en PilotosPage.jsx */
