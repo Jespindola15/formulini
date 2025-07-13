@@ -40,23 +40,23 @@ h2.pilotos-page-subtitle {
 
 .grid-pilotos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el tamaño de las tarjetas */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
   gap: 30px;
   justify-content: center;
-  padding: 0 20px; /* Padding para que no se peguen a los bordes */
+  padding: 0 20px; 
 }
 
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
   .grid-pilotos {
-    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    grid-template-columns: 1fr;
     padding: 0 10px;
   }
 }
 
 @media (min-width: 1024px) {
   .grid-pilotos {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+    grid-template-columns: repeat(3, 1fr); 
   }
 }

@@ -1,5 +1,5 @@
 /* src/Styles/TarjetaPiloto.css */
-.seccion-pilotos-escuderia { /* Esta clase es para la sección de pilotos en EscuderiaDetail */
+.seccion-pilotos-escuderia { 
   grid-area: drivers;
   display: flex;
   flex-wrap: wrap;

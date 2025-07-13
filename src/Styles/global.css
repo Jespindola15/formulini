@@ -16,11 +16,10 @@
   --navbar-height: 80px; /* Altura estimada de tu Navbar */
 }
 
-html, body, #root { /* Asegúrate de que #root o el ID de tu div principal de React ocupe el 100% */
+html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  /* overflow: hidden; /* <-- ¡QUITAR O COMENTAR ESTA LÍNEA! */
 }
 
 body {
@@ -29,8 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--fondo-oscuro);
   color: var(--texto-claro);
-  overflow-x: hidden; /* Mantiene el scroll horizontal oculto */
-  /* overflow-y: hidden; /* <-- ¡QUITAR O COMENTAR ESTA LÍNEA! */
+  overflow-x: hidden; 
 }
 
 .mensaje-carga, .mensaje-error, .mensaje-sin-datos {
@@ -41,9 +39,9 @@ body {
 }
 
 main.content {
-  min-height: calc(100vh - var(--navbar-height)); /* Ajusta la altura del contenido */
-  display: flex; /* Para que el contenido interno pueda usar flex/grid */
+  min-height: calc(100vh - var(--navbar-height)); 
+  display: flex; 
   flex-direction: column;
-  flex-grow: 1; /* Permite que el main crezca y ocupe el espacio disponible */
-  padding: 0; /* Aseguramos que no haya padding extra aquí */
+  flex-grow: 1; 
+  padding: 0; 
 }

@@ -2,15 +2,15 @@
 .grid-estadisticas-escuderia {
   grid-area: stats;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Hacemos las columnas un poco más pequeñas en móvil */
-  gap: 15px; /* Reducimos el gap */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 15px; 
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
 .item-estadistica {
   background-color: var(--card-background);
-  padding: 15px; /* Reducimos el padding */
+  padding: 15px; 
   border-radius: 8px;
   text-align: center;
   display: flex;
@@ -28,15 +28,15 @@
 }
 
 .stat-label {
-  font-size: 0.8em; /* Hacemos la etiqueta un poco más pequeña */
+  font-size: 0.8em; 
   color: var(--f1-gris-claro);
-  margin-bottom: 3px; /* Reducimos el margen */
+  margin-bottom: 3px; 
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .stat-value {
-  font-size: 1.5em; /* Hacemos el valor un poco más pequeño */
+  font-size: 1.5em; 
   font-weight: 700;
   color: var(--texto-claro);
 }
@@ -44,11 +44,11 @@
 /* Media query para desktop, para asegurar que se mantengan compactas */
 @media (min-width: 768px) {
     .grid-estadisticas-escuderia {
-        grid-template-columns: 1fr; /* Una sola columna en desktop para que estén apiladas verticalmente */
-        gap: 10px; /* Espacio más pequeño entre ítems apilados */
+        grid-template-columns: 1fr; 
+        gap: 10px; 
     }
     .item-estadistica {
-        padding: 10px 15px; /* Ajuste de padding para desktop */
+        padding: 10px 15px; 
     }
     .stat-label {
         font-size: 0.75em;

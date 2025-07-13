@@ -13,7 +13,7 @@
   border-radius: 15px;
   margin-bottom: 50px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+  background-color: rgba(0, 0, 0, 0.3); 
   padding: 60px 20px;
 }
 
@@ -21,10 +21,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;       /* Mejor usar width y height en vez de min-width y min-height */
+  width: 100%;       
   height: 100%;
   object-fit: cover;
-  object-position: center;  /* CENTRAR el video */
+  object-position: center;  
   z-index: 0;
   filter: brightness(0.3);
 
@@ -44,10 +44,10 @@
 }
 
 .hero-logo {
-  width: 180px; /* Tamaño del logo */
+  width: 180px; 
   height: auto;
   margin-bottom: 20px;
-  filter: brightness(1.2); /* Un poco más brillante */
+  filter: brightness(1.2); 
 }
 
 .hero-section h1 {
@@ -116,12 +116,12 @@
   object-fit: cover;
   border-radius: 8px;
   margin-top: 15px;
-  filter: brightness(0.8); /* Un poco más oscuro */
+  filter: brightness(0.8); 
   transition: filter 0.3s ease;
 }
 
 .featured-item:hover .featured-image {
-  filter: brightness(1); /* Brillo normal al pasar el ratón */
+  filter: brightness(1); 
 }
 
 /* Media Queries para responsividad */
