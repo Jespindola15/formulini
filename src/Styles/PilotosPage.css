@@ -1,15 +1,13 @@
-/* src/Styles/PilotosPage.css */
 h1.pilotos-page-title {
   font-size: 2.5em;
   color: var(--texto-claro);
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  position: center ;
   text-align: center;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  
 }
+
 h2.pilotos-page-subtitle {
   font-size: 1.2em;
   color: var(--f1-gris-claro);
@@ -47,8 +45,28 @@ h2.pilotos-page-subtitle {
 }
 
 
-/* Media queries para responsividad */
 @media (max-width: 768px) {
+  h1.pilotos-page-title {
+    font-size: 1.8em;
+  }
+
+  h2.pilotos-page-subtitle {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  .page-title {
+    font-size: 2em;
+  }
+
+  .page-subtitle {
+    font-size: 1em;
+  }
+
+  .pilotos-page-container {
+    padding: 20px 10px;
+  }
+
   .grid-pilotos {
     grid-template-columns: 1fr;
     padding: 0 10px;
@@ -58,5 +76,82 @@ h2.pilotos-page-subtitle {
 @media (min-width: 1024px) {
   .grid-pilotos {
     grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+
+.boton-base {
+  font-family: inherit;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.boton-base::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.boton-base:hover::before {
+  opacity: 1;
+}
+
+.boton-primario {
+  background-color: var(--team-main-color);
+  color: #000;
+  box-shadow: 0 0 12px var(--team-main-color);
+}
+
+.boton-primario:hover {
+  box-shadow: 0 0 25px var(--team-main-color);
+  transform: translateY(-2px);
+}
+
+.boton-secundario {
+  background-color: #1a1a1a;
+  color: var(--texto-claro);
+  border: 1px solid var(--f1-gris-claro);
+}
+
+.boton-secundario:hover {
+  background-color: #2a2a2a;
+  transform: translateY(-2px);
+}
+
+.boton-eliminar {
+  background-color: #ff2c2c;
+  color: #fff;
+  box-shadow: 0 0 8px #ff2c2c;
+}
+
+.boton-eliminar:hover {
+  background-color: #cc0000;
+  box-shadow: 0 0 15px #ff2c2c;
+  transform: scale(1.02);
+}
+
+.boton-separado {
+  margin-left: 10px;
+}
+
+@media (max-width: 480px) {
+  .boton-base {
+    padding: 10px 16px;
+    font-size: 0.9em;
   }
 }

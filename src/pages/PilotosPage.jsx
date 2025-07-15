@@ -5,6 +5,8 @@ import TarjetaPiloto from '../componentes/TarjetaPiloto';
 import Loader from '../componentes/Loader';
 import { useLocation, Link } from 'wouter';
 
+import '../Styles/PilotosPage.css';
+
 const PilotosPage = () => {
   const [pilotos, setPilotos] = useState([]);
   const [escuderias, setEscuderias] = useState([]);
@@ -76,14 +78,23 @@ const PilotosPage = () => {
               edad={piloto.edad || ''}
               escuderiaNombre={escuderiasMap[piloto.escuderiaId] || ''}
             />
-            <button onClick={() => navegar(`/pilotos/editar/${piloto.id}`)}>Editar</button>
-            <button
-              style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
-              onClick={() => handleBorrar(piloto.id)}
-            >
-              Borrar
-            </button>
+            <div>
+  <button
+    className="boton-base boton-secundario"
+    onClick={() => navegar(`/pilotos/editar/${piloto.id}`)}
+  >
+    Editar
+  </button>
+
+  <button
+    className="boton-base boton-eliminar boton-separado"
+    onClick={() => handleBorrar(piloto.id)}
+  >
+    Borrar
+  </button>
+            </div>
           </div>
+   
         ))}
       </div>
     </div>
