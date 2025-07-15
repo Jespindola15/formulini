@@ -41,7 +41,7 @@
   color: var(--texto-claro);
 }
 
-/* Media query para desktop, para asegurar que se mantengan compactas */
+/* Media query para desktop */
 @media (min-width: 768px) {
     .grid-estadisticas-escuderia {
         grid-template-columns: 1fr; 

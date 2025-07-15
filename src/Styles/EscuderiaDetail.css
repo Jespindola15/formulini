@@ -1,6 +1,6 @@
 /* Fondo general negro */
 .contenedor-pagina-escuderia {
-  background-color: #000;
+  background-color: #000; /* ← fondo negro */
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -13,7 +13,7 @@
   gap: 40px;
   z-index: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: hidden; /* ← evita scroll */
 }
 
 /* Encabezado */
@@ -109,7 +109,7 @@
   }
 
   .logo-escuderia {
-    width: 100px;
+    width: 110px;
   }
 
   .nombre-escuderia {
@@ -121,32 +121,5 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    margin-top: 10px;
-  }
-
-  .display-coche-escuderia .imagen-coche {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  .nombre-escuderia {
-    font-size: 1.6em;
-  }
-
-  .logo-escuderia {
-    width: 80px;
-  }
-
-  .detalle-escuderia {
-    font-size: 0.85em;
-  }
-
-  .contenedor-pagina-escuderia {
-    gap: 24px;
-  }
-
-  .encabezado-escuderia {
-    padding: 16px 20px;
   }
 }
