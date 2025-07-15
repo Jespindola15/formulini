@@ -46,7 +46,7 @@
   text-decoration: none !important; 
   color: var(--texto-claro);
 
-  /* Los degradados y el color base se manejan aquí */
+  /* Los degradados y el color base se manejan aca*/
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.4);
 }

@@ -13,7 +13,7 @@
   --card-background: rgba(255, 255, 255, 0.01);
   --card-border: rgba(255, 255, 255, 0.02);
   --glow-color: rgba(0, 210, 190, 0.6);
-  --navbar-height: 80px; /* Altura estimada de tu Navbar */
+  --navbar-height: 80px;
 }
 
 html, body, #root {
