@@ -3,6 +3,9 @@
 🏎️**Formulini** es una interfaz web que consume una API de Formula 1, en donde se muestran los pilotos, escuderías y pistas de la temporada 2025 de la Formula 1.
 
 ---
+Puede acceder a nuestra pagina en el siguiente link:
+https://formulini.netlify.app/
+---
 
 ## ✨ Características
 
