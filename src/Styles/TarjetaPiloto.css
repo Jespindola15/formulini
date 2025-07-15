@@ -1,82 +1,144 @@
-/* src/Styles/TarjetaPiloto.css */
-.seccion-pilotos-escuderia { 
-  grid-area: drivers;
+.seccion-pilotos-escuderia {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-  margin-top: 40px;
+  gap: 40px;
+  margin-top: 50px;
+  padding: 0 20px;
 }
 
 .tarjeta-piloto {
-  background-color: var(--card-background); 
-  padding: 1px;
-  border-radius: 12px;
+  background-color: var(--card-background);
+  padding: 20px 16px;
+  border-radius: 16px;
   text-align: center;
-  width: 220px;
+  width: 260px;
   position: relative;
-  overflow: hidden; 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid var(--card-border);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 .tarjeta-piloto:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .imagen-piloto {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--team-main-color);
-  margin-bottom: 15px;
-  filter: grayscale(0.1) brightness(0.95);
+  margin-bottom: 16px;
+  filter: grayscale(0.2) brightness(0.95);
   transition: filter 0.3s ease;
-  position: relative; 
-  z-index: 2; 
+  z-index: 2;
+  position: relative;
 }
 
 .tarjeta-piloto:hover .imagen-piloto {
-  filter: grayscale(0) brightness(1);
+  filter: grayscale(0) brightness(1.05);
 }
 
 .numero-piloto {
   position: absolute;
-  top: 50%; 
-  left: 50%; 
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 11em; 
+  font-size: 10em;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.02);
   line-height: 1;
-  z-index: 1; 
+  z-index: 1;
   pointer-events: none;
 }
 
 .nombre-piloto {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: var(--texto-claro); 
-  margin: 10px 0 5px 0;
-  position: relative; 
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--texto-claro);
+  margin-bottom: 6px;
   z-index: 3;
+  position: relative;
+  letter-spacing: 0.5px;
 }
 
-.equipo-piloto, .nacionalidad-piloto, .edad-piloto { 
-  font-size: 0.9em;
-  color: var(--f1-gris-tenue); 
+.equipo-piloto,
+.nacionalidad-piloto,
+.edad-piloto {
+  font-size: 0.95em;
+  color: var(--f1-gris-tenue);
+  margin: 2px 0;
   position: relative;
   z-index: 3;
-  margin: 2px 0;
 }
 
-/* Estilos para el grid general de pilotos en PilotosPage.jsx */
+/* Grid general (por si usás .grid-pilotos también) */
 .grid-pilotos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+/* ======= RESPONSIVE ======= */
+
+@media (max-width: 768px) {
+  .tarjeta-piloto {
+    width: 90%;
+    padding: 16px 12px;
+  }
+
+  .imagen-piloto {
+    width: 110px;
+    height: 110px;
+  }
+
+  .numero-piloto {
+    font-size: 8em;
+  }
+
+  .nombre-piloto {
+    font-size: 1.2em;
+  }
+
+  .equipo-piloto,
+  .nacionalidad-piloto,
+  .edad-piloto {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-piloto {
+    width: 100%;
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+
+  .imagen-piloto {
+    width: 95px;
+    height: 95px;
+  }
+
+  .numero-piloto {
+    font-size: 6.5em;
+  }
+
+  .nombre-piloto {
+    font-size: 1.1em;
+  }
+
+  .equipo-piloto,
+  .nacionalidad-piloto,
+  .edad-piloto {
+    font-size: 0.85em;
+  }
+
+  .seccion-pilotos-escuderia {
+    gap: 24px;
+  }
 }

@@ -75,13 +75,15 @@ const PistasPage = () => {
             <p>Mejor Piloto: {obtenerNombrePiloto(pista.mejorPilotoId)}</p>
 
             <Link href={`/pistas/editar/${pista.id}`}>
-              <button>Actualizar</button>
+              <button
+               className="boton-primario"
+              >Actualizar</button>
             </Link>
 
             <button
               onClick={() => handleBorrar(pista.id)}
-              style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
-            >
+              className="boton-eliminar boton-separado"
+            > 
               Borrar
             </button>
           </div>
